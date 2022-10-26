@@ -3,7 +3,7 @@ import * as React from "react";
 export const MyCommandCell = props => {
   const { dataItem } = props;
   const inEdit = dataItem[props.editField];
-  const isNewItem = dataItem.ProductID === undefined;
+  const isNewItem = dataItem.EmployeeID === undefined;
 
   return inEdit ? (
     <td className="k-command-cell">
@@ -31,7 +31,7 @@ export const MyCommandCell = props => {
       <button
         className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base k-grid-remove-command"
         onClick={() =>
-          confirm("Confirm deleting: " + dataItem.ProductName) &&
+          confirm("Confirm deleting: " + dataItem.EmployeeName) &&
           props.remove(dataItem)
         }
       >

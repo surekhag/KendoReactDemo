@@ -32,7 +32,7 @@ const initialDataState: State = {
 const initialFilter: CompositeFilterDescriptor  = {
     logic: "and",
     filters: [
-        { field: "ProductName", operator: "contains", value: "Chef" }
+        { field: "EmployeeName", operator: "contains", value: "Chef" }
     ]
 }
 
@@ -88,11 +88,11 @@ const GridFilterExcelExport = (): JSX.Element => {
           </button>
           </GridToolbar>
 
-        <Column field="ProductID" title="ID" filterable={false} width="60px" />
-        <Column field="ProductName" title="Product Name" width="240px" />
+        <Column field="EmployeeID" title="ID" filterable={false} width="60px" />
+        <Column field="EmployeeName" title="Employee Name" width="240px" />
         <Column field="FirstOrderedOn" width="240px" filter="date" format="{0:d}" />
         <Column field="UnitPrice" width="180px" filter="numeric" format="{0:c}" />
-        <Column field="Discontinued" width="190px" filter="boolean" />
+        <Column field="Active" width="190px" filter="boolean" />
       </Grid>
       </ExcelExport>
       </>

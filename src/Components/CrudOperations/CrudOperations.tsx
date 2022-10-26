@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState, useEffect} from "react";
 import * as ReactDOM from "react-dom";
 import {
     Grid,
@@ -7,7 +7,7 @@ import {
     GridItemChangeEvent,
     GridToolbar
 } from "@progress/kendo-react-grid";
-
+const styles = require("../../Styles/Grid.css");
 import { MyCommandCell } from "./MyCommandCell";
 import { insertItem, getItems, updateItem, deleteItem } from "./Services";
 import { Product } from "./Interfaces";
@@ -18,114 +18,119 @@ interface AppState {
     data: Product[]
 }
 
-class CrudOperations extends React.Component {
-    state: AppState = {
-        data: []
-    };
-
-    componentDidMount() {
-        this.setState({
-            data: getItems()
-        });
-    }
-
-    CommandCell = (props: GridCellProps) => (
+function CrudOperations () {
+    const [state, setState]= useState<AppState>({data:[]})
+    
+    useEffect(()=>{
+        let data= getItems()
+        setState({data})
+    },[])
+    const CommandCell = (props: GridCellProps) => (
       <MyCommandCell
         {...props}
-        edit={this.enterEdit}
-        remove={this.remove}
-        add={this.add}
-        discard={this.discard}
-        update={this.update}
-        cancel={this.cancel}
+        edit={enterEdit}
+        remove={remove}
+        add={add}
+        discard={discard}
+        update={update}
+        cancel={cancel}
         editField={editField}
         />
     );
 
     // modify the data in the store, db etc
-    remove = (dataItem: Product) => {
+    const remove = (dataItem: Product) => {
         const data = deleteItem(dataItem);
-        this.setState({ data });
+        setState({ data });
     };
 
-    add = (dataItem: Product) => {
+    const add = (dataItem: Product) => {
         dataItem.inEdit = true;
 
         const data = insertItem(dataItem);
-        this.setState({
+        setState({
             data: data
         });
     };
 
-    update = (dataItem: Product) => {
+    const update = (dataItem: Product) => {
         dataItem.inEdit = false;
         const data = updateItem(dataItem);
-        this.setState({ data });
+        setState({ data });
     };
 
     // Local state operations
-    discard = () => {
-        const data = [...this.state.data];
+    const discard = () => {
+        const data = [...state.data];
         data.splice(0, 1)
-        this.setState({ data });
+        setState({ data });
     };
 
-    cancel = (dataItem: Product) => {
+    const  cancel = (dataItem: Product) => {
         const originalItem = getItems().find(
-            p => p.ProductID === dataItem.ProductID
+            p => p.EmployeeID === dataItem.EmployeeID
         );
-        const data = this.state.data.map(item =>
-            item.ProductID === originalItem.ProductID ? originalItem : item
+        const data = state.data.map(item =>
+            item.EmployeeID === originalItem.EmployeeID ? originalItem : item
         );
 
-        this.setState({ data });
+        setState({ data });
     };
 
-    enterEdit = (dataItem: Product) => {
-        this.setState({
-            data: this.state.data.map(item =>
-                item.ProductID === dataItem.ProductID ? { ...item, inEdit: true } : item
+    const enterEdit = (dataItem: Product) => {
+        setState({
+            data: state.data.map(item =>
+                item.EmployeeID === dataItem.EmployeeID ? { ...item, inEdit: true } : item
             )
         });
     };
 
-    itemChange = (event: GridItemChangeEvent) => {
-        const data = this.state.data.map(item =>
-            item.ProductID === event.dataItem.ProductID
+    const itemChange = (event: GridItemChangeEvent) => {
+        const data = state.data.map(item =>
+            item.EmployeeID === event.dataItem.EmployeeID
                 ? { ...item, [event.field || '']: event.value }
                 : item
         );
 
-        this.setState({ data });
+        setState({ data });
     };
 
-    addNew = () => {
-        const newDataItem = { inEdit: true, Discontinued: false };
+    const addNew = () => {
+        const newDataItem = { inEdit: true, Active: false };
 
-        this.setState({
-            data: [newDataItem, ...this.state.data]
+        setState({
+            data: [newDataItem, ...state.data]
         });
     };
 
-    render() {
+    
+const initialDataState: State = {
+    sort: [{ field: "code", dir: "asc" }],
+    take: 10,
+    skip: 0,
+};
+
+
         return (
+            <div className="pagewrapper">
+            <h3 className='headtext'> Employee Information</h3>
           <Grid
             style={{ height: "420px" }}
-            data={this.state.data}
-            onItemChange={this.itemChange}
+            data={state.data}
+            onItemChange={itemChange}
             editField={editField}
             >
             <GridToolbar>
               <button
                 title="Add new"
                 className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
-                onClick={this.addNew}
+                onClick={addNew}
                     >
                 Add new
               </button>
             </GridToolbar>
-            <Column field="ProductID" title="Id" width="50px" editable={false} />
-            <Column field="ProductName" title="Product Name" width="200px" />
+            <Column field="EmployeeID" title="Id" width="50px" editable={false} />
+            <Column field="EmployeeName" title="Employee Name" width="200px" />
             {/* <Column
               field="FirstOrderedOn"
               title="First Ordered"
@@ -133,17 +138,34 @@ class CrudOperations extends React.Component {
               format="{0:d}"
               width="150px"
                 /> */}
-            <Column
+            {/* <Column
               field="UnitsInStock"
               title="Units"
               width="120px"
               editor="numeric"
+                /> */}
+                 <Column
+              field="Designation"
+              title="Designation"
+              width="120px"
                 />
-            <Column field="Discontinued" title="Discontinued" editor="boolean" />
-            <Column cell={this.CommandCell} width="200px" />
+                 <Column
+              field="Address"
+              title="Address"
+              width="120px"
+                />
+                 <Column
+              field="Department"
+              title="Department"
+              width="120px"
+                />
+                
+            <Column field="Active" title="Active" editor="boolean" />
+            <Column cell={CommandCell} width="200px" />
           </Grid>
+          </div>
         );
-    }
+    
 }
 
 export default CrudOperations;

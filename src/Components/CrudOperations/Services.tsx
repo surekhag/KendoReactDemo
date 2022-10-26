@@ -3,10 +3,10 @@ import  sampleProducts  from "./SampleProducts.json";
 let data = [...sampleProducts];
 
 const generateId = data =>
-    data.reduce((acc, current) => Math.max(acc, current.ProductID), 0) + 1;
+    data.reduce((acc, current) => Math.max(acc, current.EmployeeID), 0) + 1;
 
 export const insertItem = item => {
-    item.ProductID = generateId(data);
+    item.EmployeeID = generateId(data);
     item.inEdit = false;
     data.unshift(item);
     return data;
@@ -17,13 +17,13 @@ export const getItems = () => {
 };
 
 export const updateItem = item => {
-    let index = data.findIndex(record => record.ProductID === item.ProductID);
+    let index = data.findIndex(record => record.EmployeeID === item.EmployeeID);
     data[index] = item;
     return data;
 };
 
 export const deleteItem = item => {
-    let index = data.findIndex(record => record.ProductID === item.ProductID);
+    let index = data.findIndex(record => record.EmployeeID === item.EmployeeID);
     data.splice(index, 1);
     return data;
 };

@@ -1,182 +1,1540 @@
-
 [
     {
-        "ProductID": 1,
-        "ProductName": "Chai",
+        "EmployeeID": 1,
+        "EmployeeName": "Surekha Gadkari",
         "SupplierID": 1,
         "CategoryID": 1,
         "QuantityPerUnit": "10 boxes x 20 bags",
-        "UnitPrice": 18,
+        "UnitPrice": 18.0000,
+        "Designation": "Developer",
         "UnitsInStock": 39,
         "UnitsOnOrder": 0,
         "ReorderLevel": 10,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 1,
             "CategoryName": "Beverages",
             "Description": "Soft drinks, coffees, teas, beers, and ales"
         },
-        "FirstOrderedOn": "26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 2,
-        "ProductName": "Chang",
+        "EmployeeID": 2,
+        "EmployeeName": "Chaitra",
         "SupplierID": 1,
         "CategoryID": 1,
         "QuantityPerUnit": "24 - 12 oz bottles",
-        "UnitPrice": 19,
+        "UnitPrice": 19.0000,
+        "Designation": "Developer",
         "UnitsInStock": 17,
         "UnitsOnOrder": 40,
         "ReorderLevel": 25,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 1,
             "CategoryName": "Beverages",
             "Description": "Soft drinks, coffees, teas, beers, and ales"
         },
-        "FirstOrderedOn": "26/8/1996"   
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 3,
-        "ProductName": "Aniseed Syrup",
+        "EmployeeID": 3,
+        "EmployeeName": "Anil Rane",
         "SupplierID": 1,
         "CategoryID": 2,
         "QuantityPerUnit": "12 - 550 ml bottles",
-        "UnitPrice": 10,
+        "UnitPrice": 10.0000,
+        "Designation": "Developer",
         "UnitsInStock": 13,
         "UnitsOnOrder": 70,
         "ReorderLevel": 25,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 2,
             "CategoryName": "Condiments",
             "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
         },
-        "FirstOrderedOn": "26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 4,
-        "ProductName": "Chef Anton's Cajun Seasoning",
+        "EmployeeID": 4,
+        "EmployeeName": "Sonali",
         "SupplierID": 2,
         "CategoryID": 2,
         "QuantityPerUnit": "48 - 6 oz jars",
-        "UnitPrice": 22,
+        "UnitPrice": 22.0000,
+        "Designation": "Developer",
         "UnitsInStock": 53,
         "UnitsOnOrder": 0,
         "ReorderLevel": 0,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 2,
             "CategoryName": "Condiments",
             "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
         },
-        "FirstOrderedOn": "26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 5,
-        "ProductName": "Chef Anton's Gumbo Mix",
+        "EmployeeID": 5,
+        "EmployeeName": "Chef Anton's Gumbo Mix",
         "SupplierID": 2,
         "CategoryID": 2,
         "QuantityPerUnit": "36 boxes",
-        "UnitPrice": 21.35,
+        "UnitPrice": 21.3500,
+        "Designation": "Developer",
         "UnitsInStock": 0,
         "UnitsOnOrder": 0,
         "ReorderLevel": 0,
-        "Discontinued": true,
+        "Active": true,
         "Category": {
             "CategoryID": 2,
             "CategoryName": "Condiments",
             "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
         },
-        "FirstOrderedOn": "26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 6,
-        "ProductName": "Grandma's Boysenberry Spread",
+        "EmployeeID": 6,
+        "EmployeeName": "Pradnya",
         "SupplierID": 3,
         "CategoryID": 2,
         "QuantityPerUnit": "12 - 8 oz jars",
-        "UnitPrice": 25,
+        "UnitPrice": 25.0000,
+        "Designation": "Developer",
         "UnitsInStock": 120,
         "UnitsOnOrder": 0,
         "ReorderLevel": 25,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 2,
             "CategoryName": "Condiments",
             "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
         },
-        "FirstOrderedOn": "26/8/1996"    },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
     {
-        "ProductID": 7,
-        "ProductName": "Uncle Bob's Organic Dried Pears",
+        "EmployeeID": 7,
+        "EmployeeName": "Parag",
         "SupplierID": 3,
         "CategoryID": 7,
         "QuantityPerUnit": "12 - 1 lb pkgs.",
-        "UnitPrice": 30,
+        "UnitPrice": 30.0000,
+        "Designation": "Developer",
         "UnitsInStock": 15,
         "UnitsOnOrder": 0,
         "ReorderLevel": 10,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 7,
             "CategoryName": "Produce",
             "Description": "Dried fruit and bean curd"
         },
-        "FirstOrderedOn":"26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 8,
-        "ProductName": "Northwoods Cranberry Sauce",
+        "EmployeeID": 8,
+        "EmployeeName": "Northwoods Cranberry Sauce",
         "SupplierID": 3,
         "CategoryID": 2,
         "QuantityPerUnit": "12 - 12 oz jars",
-        "UnitPrice": 40,
+        "UnitPrice": 40.0000,
+        "Designation": "Developer",
         "UnitsInStock": 6,
         "UnitsOnOrder": 0,
         "ReorderLevel": 0,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 2,
             "CategoryName": "Condiments",
             "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
         },
-        "FirstOrderedOn": "26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 9,
-        "ProductName": "Mishi Kobe Niku",
+        "EmployeeID": 9,
+        "EmployeeName": "Minakshi",
         "SupplierID": 4,
         "CategoryID": 6,
         "QuantityPerUnit": "18 - 500 g pkgs.",
-        "UnitPrice": 97,
+        "UnitPrice": 97.0000,
+        "Designation": "Developer",
         "UnitsInStock": 29,
         "UnitsOnOrder": 0,
         "ReorderLevel": 0,
-        "Discontinued": true,
+        "Active": true,
         "Category": {
             "CategoryID": 6,
             "CategoryName": "Meat/Poultry",
             "Description": "Prepared meats"
         },
-        "FirstOrderedOn": "26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
     },
     {
-        "ProductID": 10,
-        "ProductName": "Ikura",
+        "EmployeeID": 10,
+        "EmployeeName": "Karuna",
         "SupplierID": 4,
         "CategoryID": 8,
         "QuantityPerUnit": "12 - 200 ml jars",
-        "UnitPrice": 31,
+        "UnitPrice": 31.0000,
+        "Designation": "Developer",
         "UnitsInStock": 31,
         "UnitsOnOrder": 0,
         "ReorderLevel": 0,
-        "Discontinued": false,
+        "Active": false,
         "Category": {
             "CategoryID": 8,
             "CategoryName": "Seafood",
             "Description": "Seaweed and fish"
         },
-        "FirstOrderedOn": "26/8/1996"
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 11,
+        "EmployeeName": "Vidya",
+        "SupplierID": 5,
+        "CategoryID": 4,
+        "QuantityPerUnit": "1 kg pkg.",
+        "UnitPrice": 21.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 22,
+        "UnitsOnOrder": 30,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 12,
+        "EmployeeName": "Queso Manchego La Pastora",
+        "SupplierID": 5,
+        "CategoryID": 4,
+        "QuantityPerUnit": "10 - 500 g pkgs.",
+        "UnitPrice": 38.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 86,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 13,
+        "EmployeeName": "Konbu",
+        "SupplierID": 6,
+        "CategoryID": 8,
+        "QuantityPerUnit": "2 kg box",
+        "UnitPrice": 6.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 24,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 14,
+        "EmployeeName": "Tofu",
+        "SupplierID": 6,
+        "CategoryID": 7,
+        "QuantityPerUnit": "40 - 100 g pkgs.",
+        "UnitPrice": 23.2500,
+        "Designation": "Developer",
+        "UnitsInStock": 35,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 7,
+            "CategoryName": "Produce",
+            "Description": "Dried fruit and bean curd"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 15,
+        "EmployeeName": "Genen Shouyu",
+        "SupplierID": 6,
+        "CategoryID": 2,
+        "QuantityPerUnit": "24 - 250 ml bottles",
+        "UnitPrice": 15.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 39,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 2,
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 16,
+        "EmployeeName": "Pavlova",
+        "SupplierID": 7,
+        "CategoryID": 3,
+        "QuantityPerUnit": "32 - 500 g boxes",
+        "UnitPrice": 17.4500,
+        "Designation": "Developer",
+        "UnitsInStock": 29,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 10,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 17,
+        "EmployeeName": "Alice Mutton",
+        "SupplierID": 7,
+        "CategoryID": 6,
+        "QuantityPerUnit": "20 - 1 kg tins",
+        "UnitPrice": 39.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 0,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": true,
+        "Category": {
+            "CategoryID": 6,
+            "CategoryName": "Meat/Poultry",
+            "Description": "Prepared meats"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 18,
+        "EmployeeName": "Carnarvon Tigers",
+        "SupplierID": 7,
+        "CategoryID": 8,
+        "QuantityPerUnit": "16 kg pkg.",
+        "UnitPrice": 62.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 42,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 19,
+        "EmployeeName": "Teatime Chocolate Biscuits",
+        "SupplierID": 8,
+        "CategoryID": 3,
+        "QuantityPerUnit": "10 boxes x 12 pieces",
+        "UnitPrice": 9.2000,
+        "Designation": "Developer",
+        "UnitsInStock": 25,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 20,
+        "EmployeeName": "Sir Rodney's Marmalade",
+        "SupplierID": 8,
+        "CategoryID": 3,
+        "QuantityPerUnit": "30 gift boxes",
+        "UnitPrice": 81.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 40,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 21,
+        "EmployeeName": "Sir Rodney's Scones",
+        "SupplierID": 8,
+        "CategoryID": 3,
+        "QuantityPerUnit": "24 pkgs. x 4 pieces",
+        "UnitPrice": 10.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 3,
+        "UnitsOnOrder": 40,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 22,
+        "EmployeeName": "Gustaf's Knäckebröd",
+        "SupplierID": 9,
+        "CategoryID": 5,
+        "QuantityPerUnit": "24 - 500 g pkgs.",
+        "UnitPrice": 21.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 104,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 5,
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 23,
+        "EmployeeName": "Tunnbröd",
+        "SupplierID": 9,
+        "CategoryID": 5,
+        "QuantityPerUnit": "12 - 250 g pkgs.",
+        "UnitPrice": 9.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 61,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 5,
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 24,
+        "EmployeeName": "Guaraná Fantástica",
+        "SupplierID": 10,
+        "CategoryID": 1,
+        "QuantityPerUnit": "12 - 355 ml cans",
+        "UnitPrice": 4.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 20,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": true,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 25,
+        "EmployeeName": "NuNuCa Nuß-Nougat-Creme",
+        "SupplierID": 11,
+        "CategoryID": 3,
+        "QuantityPerUnit": "20 - 450 g glasses",
+        "UnitPrice": 14.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 76,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 26,
+        "EmployeeName": "Gumbär Gummibärchen",
+        "SupplierID": 11,
+        "CategoryID": 3,
+        "QuantityPerUnit": "100 - 250 g bags",
+        "UnitPrice": 31.2300,
+        "Designation": "Developer",
+        "UnitsInStock": 15,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 27,
+        "EmployeeName": "Schoggi Schokolade",
+        "SupplierID": 11,
+        "CategoryID": 3,
+        "QuantityPerUnit": "100 - 100 g pieces",
+        "UnitPrice": 43.9000,
+        "Designation": "Developer",
+        "UnitsInStock": 49,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 28,
+        "EmployeeName": "Rössle Sauerkraut",
+        "SupplierID": 12,
+        "CategoryID": 7,
+        "QuantityPerUnit": "25 - 825 g cans",
+        "UnitPrice": 45.6000,
+        "Designation": "Developer",
+        "UnitsInStock": 26,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": true,
+        "Category": {
+            "CategoryID": 7,
+            "CategoryName": "Produce",
+            "Description": "Dried fruit and bean curd"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 29,
+        "EmployeeName": "Thüringer Rostbratwurst",
+        "SupplierID": 12,
+        "CategoryID": 6,
+        "QuantityPerUnit": "50 bags x 30 sausgs.",
+        "UnitPrice": 123.7900,
+        "Designation": "Developer",
+        "UnitsInStock": 0,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": true,
+        "Category": {
+            "CategoryID": 6,
+            "CategoryName": "Meat/Poultry",
+            "Description": "Prepared meats"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 30,
+        "EmployeeName": "Nord-Ost Matjeshering",
+        "SupplierID": 13,
+        "CategoryID": 8,
+        "QuantityPerUnit": "10 - 200 g glasses",
+        "UnitPrice": 25.8900,
+        "Designation": "Developer",
+        "UnitsInStock": 10,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 31,
+        "EmployeeName": "Gorgonzola Telino",
+        "SupplierID": 14,
+        "CategoryID": 4,
+        "QuantityPerUnit": "12 - 100 g pkgs",
+        "UnitPrice": 12.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 0,
+        "UnitsOnOrder": 70,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 32,
+        "EmployeeName": "Mascarpone Fabioli",
+        "SupplierID": 14,
+        "CategoryID": 4,
+        "QuantityPerUnit": "24 - 200 g pkgs.",
+        "UnitPrice": 32.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 9,
+        "UnitsOnOrder": 40,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 33,
+        "EmployeeName": "Geitost",
+        "SupplierID": 15,
+        "CategoryID": 4,
+        "QuantityPerUnit": "500 g",
+        "UnitPrice": 2.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 112,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 34,
+        "EmployeeName": "Sasquatch Ale",
+        "SupplierID": 16,
+        "CategoryID": 1,
+        "QuantityPerUnit": "24 - 12 oz bottles",
+        "UnitPrice": 14.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 111,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 35,
+        "EmployeeName": "Steeleye Stout",
+        "SupplierID": 16,
+        "CategoryID": 1,
+        "QuantityPerUnit": "24 - 12 oz bottles",
+        "UnitPrice": 18.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 20,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 36,
+        "EmployeeName": "Inlagd Sill",
+        "SupplierID": 17,
+        "CategoryID": 8,
+        "QuantityPerUnit": "24 - 250 g  jars",
+        "UnitPrice": 19.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 112,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 37,
+        "EmployeeName": "Gravad lax",
+        "SupplierID": 17,
+        "CategoryID": 8,
+        "QuantityPerUnit": "12 - 500 g pkgs.",
+        "UnitPrice": 26.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 11,
+        "UnitsOnOrder": 50,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 38,
+        "EmployeeName": "Côte de Blaye",
+        "SupplierID": 18,
+        "CategoryID": 1,
+        "QuantityPerUnit": "12 - 75 cl bottles",
+        "UnitPrice": 263.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 17,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 39,
+        "EmployeeName": "Chartreuse verte",
+        "SupplierID": 18,
+        "CategoryID": 1,
+        "QuantityPerUnit": "750 cc per bottle",
+        "UnitPrice": 18.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 69,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 40,
+        "EmployeeName": "Boston Crab Meat",
+        "SupplierID": 19,
+        "CategoryID": 8,
+        "QuantityPerUnit": "24 - 4 oz tins",
+        "UnitPrice": 18.4000,
+        "Designation": "Developer",
+        "UnitsInStock": 123,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 41,
+        "EmployeeName": "Jack's New England Clam Chowder",
+        "SupplierID": 19,
+        "CategoryID": 8,
+        "QuantityPerUnit": "12 - 12 oz cans",
+        "UnitPrice": 9.6500,
+        "Designation": "Developer",
+        "UnitsInStock": 85,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 10,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 42,
+        "EmployeeName": "Singaporean Hokkien Fried Mee",
+        "SupplierID": 20,
+        "CategoryID": 5,
+        "QuantityPerUnit": "32 - 1 kg pkgs.",
+        "UnitPrice": 14.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 26,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": true,
+        "Category": {
+            "CategoryID": 5,
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 43,
+        "EmployeeName": "Ipoh Coffee",
+        "SupplierID": 20,
+        "CategoryID": 1,
+        "QuantityPerUnit": "16 - 500 g tins",
+        "UnitPrice": 46.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 17,
+        "UnitsOnOrder": 10,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 44,
+        "EmployeeName": "Gula Malacca",
+        "SupplierID": 20,
+        "CategoryID": 2,
+        "QuantityPerUnit": "20 - 2 kg bags",
+        "UnitPrice": 19.4500,
+        "Designation": "Developer",
+        "UnitsInStock": 27,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 2,
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 45,
+        "EmployeeName": "Rogede sild",
+        "SupplierID": 21,
+        "CategoryID": 8,
+        "QuantityPerUnit": "1k pkg.",
+        "UnitPrice": 9.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 5,
+        "UnitsOnOrder": 70,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 46,
+        "EmployeeName": "Spegesild",
+        "SupplierID": 21,
+        "CategoryID": 8,
+        "QuantityPerUnit": "4 - 450 g glasses",
+        "UnitPrice": 12.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 95,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 47,
+        "EmployeeName": "Zaanse koeken",
+        "SupplierID": 22,
+        "CategoryID": 3,
+        "QuantityPerUnit": "10 - 4 oz boxes",
+        "UnitPrice": 9.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 36,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 48,
+        "EmployeeName": "Chocolade",
+        "SupplierID": 22,
+        "CategoryID": 3,
+        "QuantityPerUnit": "10 pkgs.",
+        "UnitPrice": 12.7500,
+        "Designation": "Developer",
+        "UnitsInStock": 15,
+        "UnitsOnOrder": 70,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 49,
+        "EmployeeName": "Maxilaku",
+        "SupplierID": 23,
+        "CategoryID": 3,
+        "QuantityPerUnit": "24 - 50 g pkgs.",
+        "UnitPrice": 20.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 10,
+        "UnitsOnOrder": 60,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 50,
+        "EmployeeName": "Valkoinen suklaa",
+        "SupplierID": 23,
+        "CategoryID": 3,
+        "QuantityPerUnit": "12 - 100 g bars",
+        "UnitPrice": 16.2500,
+        "Designation": "Developer",
+        "UnitsInStock": 65,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 51,
+        "EmployeeName": "Manjimup Dried Apples",
+        "SupplierID": 24,
+        "CategoryID": 7,
+        "QuantityPerUnit": "50 - 300 g pkgs.",
+        "UnitPrice": 53.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 20,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 10,
+        "Active": false,
+        "Category": {
+            "CategoryID": 7,
+            "CategoryName": "Produce",
+            "Description": "Dried fruit and bean curd"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 52,
+        "EmployeeName": "Filo Mix",
+        "SupplierID": 24,
+        "CategoryID": 5,
+        "QuantityPerUnit": "16 - 2 kg boxes",
+        "UnitPrice": 7.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 38,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 5,
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 53,
+        "EmployeeName": "Perth Pasties",
+        "SupplierID": 24,
+        "CategoryID": 6,
+        "QuantityPerUnit": "48 pieces",
+        "UnitPrice": 32.8000,
+        "Designation": "Developer",
+        "UnitsInStock": 0,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": true,
+        "Category": {
+            "CategoryID": 6,
+            "CategoryName": "Meat/Poultry",
+            "Description": "Prepared meats"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 54,
+        "EmployeeName": "Tourtière",
+        "SupplierID": 25,
+        "CategoryID": 6,
+        "QuantityPerUnit": "16 pies",
+        "UnitPrice": 7.4500,
+        "Designation": "Developer",
+        "UnitsInStock": 21,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 10,
+        "Active": false,
+        "Category": {
+            "CategoryID": 6,
+            "CategoryName": "Meat/Poultry",
+            "Description": "Prepared meats"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 55,
+        "EmployeeName": "Pâté chinois",
+        "SupplierID": 25,
+        "CategoryID": 6,
+        "QuantityPerUnit": "24 boxes x 2 pies",
+        "UnitPrice": 24.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 115,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 6,
+            "CategoryName": "Meat/Poultry",
+            "Description": "Prepared meats"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 56,
+        "EmployeeName": "Gnocchi di nonna Alice",
+        "SupplierID": 26,
+        "CategoryID": 5,
+        "QuantityPerUnit": "24 - 250 g pkgs.",
+        "UnitPrice": 38.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 21,
+        "UnitsOnOrder": 10,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 5,
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 57,
+        "EmployeeName": "Ravioli Angelo",
+        "SupplierID": 26,
+        "CategoryID": 5,
+        "QuantityPerUnit": "24 - 250 g pkgs.",
+        "UnitPrice": 19.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 36,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 5,
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 58,
+        "EmployeeName": "Escargots de Bourgogne",
+        "SupplierID": 27,
+        "CategoryID": 8,
+        "QuantityPerUnit": "24 pieces",
+        "UnitPrice": 13.2500,
+        "Designation": "Developer",
+        "UnitsInStock": 62,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 59,
+        "EmployeeName": "Raclette Courdavault",
+        "SupplierID": 28,
+        "CategoryID": 4,
+        "QuantityPerUnit": "5 kg pkg.",
+        "UnitPrice": 55.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 79,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 60,
+        "EmployeeName": "Camembert Pierrot",
+        "SupplierID": 28,
+        "CategoryID": 4,
+        "QuantityPerUnit": "15 - 300 g rounds",
+        "UnitPrice": 34.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 19,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 61,
+        "EmployeeName": "Sirop d'érable",
+        "SupplierID": 29,
+        "CategoryID": 2,
+        "QuantityPerUnit": "24 - 500 ml bottles",
+        "UnitPrice": 28.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 113,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 2,
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 62,
+        "EmployeeName": "Tarte au sucre",
+        "SupplierID": 29,
+        "CategoryID": 3,
+        "QuantityPerUnit": "48 pies",
+        "UnitPrice": 49.3000,
+        "Designation": "Developer",
+        "UnitsInStock": 17,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 63,
+        "EmployeeName": "Vegie-spread",
+        "SupplierID": 7,
+        "CategoryID": 2,
+        "QuantityPerUnit": "15 - 625 g jars",
+        "UnitPrice": 43.9000,
+        "Designation": "Developer",
+        "UnitsInStock": 24,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 2,
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 64,
+        "EmployeeName": "Wimmers gute Semmelknödel",
+        "SupplierID": 12,
+        "CategoryID": 5,
+        "QuantityPerUnit": "20 bags x 4 pieces",
+        "UnitPrice": 33.2500,
+        "Designation": "Developer",
+        "UnitsInStock": 22,
+        "UnitsOnOrder": 80,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 5,
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 65,
+        "EmployeeName": "Louisiana Fiery Hot Pepper Sauce",
+        "SupplierID": 2,
+        "CategoryID": 2,
+        "QuantityPerUnit": "32 - 8 oz bottles",
+        "UnitPrice": 21.0500,
+        "Designation": "Developer",
+        "UnitsInStock": 76,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 2,
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 66,
+        "EmployeeName": "Louisiana Hot Spiced Okra",
+        "SupplierID": 2,
+        "CategoryID": 2,
+        "QuantityPerUnit": "24 - 8 oz jars",
+        "UnitPrice": 17.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 4,
+        "UnitsOnOrder": 100,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 2,
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 67,
+        "EmployeeName": "Laughing Lumberjack Lager",
+        "SupplierID": 16,
+        "CategoryID": 1,
+        "QuantityPerUnit": "24 - 12 oz bottles",
+        "UnitPrice": 14.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 52,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 10,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 68,
+        "EmployeeName": "Scottish Longbreads",
+        "SupplierID": 8,
+        "CategoryID": 3,
+        "QuantityPerUnit": "10 boxes x 8 pieces",
+        "UnitPrice": 12.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 6,
+        "UnitsOnOrder": 10,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 3,
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 69,
+        "EmployeeName": "Gudbrandsdalsost",
+        "SupplierID": 15,
+        "CategoryID": 4,
+        "QuantityPerUnit": "10 kg pkg.",
+        "UnitPrice": 36.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 26,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 70,
+        "EmployeeName": "Outback Lager",
+        "SupplierID": 7,
+        "CategoryID": 1,
+        "QuantityPerUnit": "24 - 355 ml bottles",
+        "UnitPrice": 15.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 15,
+        "UnitsOnOrder": 10,
+        "ReorderLevel": 30,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 71,
+        "EmployeeName": "Flotemysost",
+        "SupplierID": 15,
+        "CategoryID": 4,
+        "QuantityPerUnit": "10 - 500 g pkgs.",
+        "UnitPrice": 21.5000,
+        "Designation": "Developer",
+        "UnitsInStock": 26,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 72,
+        "EmployeeName": "Mozzarella di Giovanni",
+        "SupplierID": 14,
+        "CategoryID": 4,
+        "QuantityPerUnit": "24 - 200 g pkgs.",
+        "UnitPrice": 34.8000,
+        "Designation": "Developer",
+        "UnitsInStock": 14,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 0,
+        "Active": false,
+        "Category": {
+            "CategoryID": 4,
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 73,
+        "EmployeeName": "Röd Kaviar",
+        "SupplierID": 17,
+        "CategoryID": 8,
+        "QuantityPerUnit": "24 - 150 g jars",
+        "UnitPrice": 15.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 101,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 8,
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 74,
+        "EmployeeName": "Longlife Tofu",
+        "SupplierID": 4,
+        "CategoryID": 7,
+        "QuantityPerUnit": "5 kg pkg.",
+        "UnitPrice": 10.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 4,
+        "UnitsOnOrder": 20,
+        "ReorderLevel": 5,
+        "Active": false,
+        "Category": {
+            "CategoryID": 7,
+            "CategoryName": "Produce",
+            "Description": "Dried fruit and bean curd"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 75,
+        "EmployeeName": "Rhönbräu Klosterbier",
+        "SupplierID": 12,
+        "CategoryID": 1,
+        "QuantityPerUnit": "24 - 0.5 l bottles",
+        "UnitPrice": 7.7500,
+        "Designation": "Developer",
+        "UnitsInStock": 125,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 25,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 76,
+        "EmployeeName": "Lakkalikööri",
+        "SupplierID": 23,
+        "CategoryID": 1,
+        "QuantityPerUnit": "500 ml",
+        "UnitPrice": 18.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 57,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 20,
+        "Active": false,
+        "Category": {
+            "CategoryID": 1,
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales"
+        },
+        "Address": "Mumbai",
+        "Department": "Information technology"
+    },
+    {
+        "EmployeeID": 77,
+        "EmployeeName": "Original Frankfurter grüne Soße",
+        "SupplierID": 12,
+        "CategoryID": 2,
+        "QuantityPerUnit": "12 boxes",
+        "UnitPrice": 13.0000,
+        "Designation": "Developer",
+        "UnitsInStock": 32,
+        "UnitsOnOrder": 0,
+        "ReorderLevel": 15,
+        "Active": false,
+        "Category": {
+            "CategoryID": 2,
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings"
+        }
     }
 ]

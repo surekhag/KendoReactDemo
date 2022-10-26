@@ -6,8 +6,8 @@ export interface ProductCategory {
 }
 
 export interface Product {
-    ProductID: number,
-    ProductName?: string,
+    EmployeeID: number,
+    EmployeeName?: string,
     SupplierID?: number,
     CategoryID?: number,
     QuantityPerUnit?: string,
@@ -15,7 +15,7 @@ export interface Product {
     UnitsInStock?: number,
     UnitsOnOrder?: number,
     ReorderLevel?: number,
-    Discontinued?: boolean,
+    Active?: boolean,
     Category?: ProductCategory,
     expanded?: boolean,
     inEdit?: boolean | string,
@@ -43,7 +43,7 @@ export interface OrderShipAddress {
 }
 
 export interface OrderDetails {
-    productID: number,
+    EmployeeID: number,
     unitPrice: number,
     quantity: number,
     discount: number

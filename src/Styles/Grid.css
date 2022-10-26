@@ -1,3 +1,9 @@
+.pagewrapper{
+    padding:10px 15px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 #prods .k-grid-header {
     background-color: rgb(240, 208, 121);
@@ -7,8 +13,27 @@
 }
 
 .k-grid-header {
-    background-color: lightblue !important;
+    background-color: rgb(126, 196, 219) !important;
 }
 .k-grid-container .k-grid-content{
-    background-color: #e8e2e5;
+    background-color: #e5eaf1;
+}
+
+.headtext {
+    padding-top: 10px;
+    text-align: center;
+    color: unset;
+}
+
+.k-form{
+    border: 1px solid black;
+    border-radius: 15x;
+    padding: 20px;
+}
+.k-form .k-form-legend {
+    font-weight: bold;
+}
+.k-button-solid-primary, .k-button-solid-primary:hover {
+    background-color: blue;
+border-color: blue;
 }

@@ -48,8 +48,8 @@ const ProductDetailsPdfExports = (): JSX.Element => {
                     Export PDF
                 </button>
             </GridToolbar>
-            <GridColumn field="ProductID" title="ID" width="40px" />
-            <GridColumn field="ProductName" title="Name" width="250px" />
+            <GridColumn field="EmployeeID" title="ID" width="40px" />
+            <GridColumn field="EmployeeName" title="Name" width="250px" />
             <GridColumn field="Category.CategoryName" title="CategoryName" />
             <GridColumn field="UnitPrice" title="Price" />
             <GridColumn field="UnitsInStock" title="In stock" />
