@@ -32,10 +32,46 @@ const EmailInput = (fieldRenderProps: FieldRenderProps) => {
     );
 };
 
-const NameRegex: RegExp = new RegExp(/^[A-Za-z]+$/);
-const nameValidator = (value: string) => (NameRegex.test(value) ? "" : "Please enter a valid name.");
+const NameRegex: RegExp = new RegExp(/^[A-Za-z0-9]+$/);
+const nameValidator = (value: string, field: string) => {
+    console.log("value", value, field)
+    if (NameRegex.test(value) && value && value.length > 0)
+        return ""
+    else {return "Please enter a valid Name."
 
-const FirstNameInput = (fieldRenderProps: FieldRenderProps) => {
+    }
+}
+
+const desnValidator = (value: string, field: string) => {
+    console.log("value", value, field)
+    if (NameRegex.test(value) && value && value.length > 0)
+        return ""
+    else {
+        return "Please enter a valid Designation."
+
+    }
+}
+const deptValidator = (value: string, field: string) => {
+    console.log("value", value, field)
+    if (NameRegex.test(value) && value && value.length > 0)
+        return ""
+    else {
+        return "Please enter a valid Department."
+        
+    }
+}
+
+const addressValidator = (value: string, field: string) => {
+    console.log("value", value, field)
+    if (NameRegex.test(value) && value && value.length > 0)
+        return ""
+    else {
+        return "Please enter a valid Address."
+        
+    }
+}
+
+const NameInput = (fieldRenderProps: FieldRenderProps) => {
     const { validationMessage, visited, ...others } = fieldRenderProps;
     return (
         <div>
@@ -50,46 +86,25 @@ const FirstNameInput = (fieldRenderProps: FieldRenderProps) => {
 
 const BasicForm = (props) => {
     const { setShow, setNotifyState, data, setState, add } = props;
-    
+
     const [isDisplayed, setIsDisplayed] = useState(false);
-    // const { success } = state;
     const handleSubmit = (dataItem: { [name: string]: any }) => {
         let temp = { ...dataItem, inEdit: true, Active: true }
-        console.log("test", temp)
-        // setState({
-        //     data: [dataItem, ...data]
-        // });
+      
         add(dataItem)
-        console.log("dataitem", dataItem)
         setShow(false)
         setNotifyState({ success: true })
         const node = document.getElementById("clear")
         node.click();
     }
 
-    const HandleShowClick = () => {
-        setIsDisplayed(true);
-    }
-    const HandleHideClick = () => {
-        setIsDisplayed(false);
-    }
     const closeForm = () => {
         setShow(false);
     }
 
 
-    // console.log("success form", success)
     return (<>
         <h3>Add New Employee</h3>
-        {/* <SharedButtons
-            isDisplayed={isDisplayed}
-            HandleShowClick={HandleShowClick}
-            HandleHideClick={HandleHideClick}
-            title1={"Show Form"}
-            title2={"Hide Form"} /> */}
-
-        {/* {isDisplayed && <> */}
-
         <Form
             onSubmit={handleSubmit}
             render={(formRenderProps: FormRenderProps) => (
@@ -97,18 +112,18 @@ const BasicForm = (props) => {
                     <fieldset className={'k-form-fieldset'}>
                         <legend className={'k-form-legend sub-text'}>Please fill in the details:</legend>
                         <div className="mb-3">
-                            <Field name={'EmployeeName'} component={FirstNameInput} label={'Employee Name'}
+                            <Field name={'EmployeeName'} component={NameInput} label={'Employee Name'}
                                 validator={nameValidator} />
                         </div>
 
                         <div className="mb-3">
-                            <Field name={'Designation'} component={Input} label={'Designation'} />
+                            <Field name={'Designation'} component={NameInput} label={'Designation'} validator={desnValidator} />
                         </div>
                         <div className="mb-3">
-                            <Field name={'Address'} component={Input} label={'Address'} />
+                            <Field name={'Address'} component={NameInput} label={'Address'} validator={addressValidator} />
                         </div>
                         <div className="mb-3">
-                            <Field name={'Department'} component={Input} label={'Department'} />
+                            <Field name={'Department'} component={NameInput} label={'Department'} validator={deptValidator} />
                         </div>
 
                         <div className="mb-3">
@@ -132,26 +147,6 @@ const BasicForm = (props) => {
                 </FormElement>
             )}
         />
-        {/* <NotificationGroup
-            style={{
-                right: 0,
-                top: "0%",
-                alignItems: "flex-start",
-                flexWrap: "wrap-reverse",
-            }}
-        >
-            <Fade>
-                {success && (
-                    <Notification
-                        type={{ style: "success", icon: true }}
-                        closable={true}
-                        onClose={() => setState({ ...state, success: false })}
-                    >
-                        <span>Form detail has been saved!</span>
-                    </Notification>
-                )}
-            </Fade>
-        </NotificationGroup> */}
     </>
     );
 };

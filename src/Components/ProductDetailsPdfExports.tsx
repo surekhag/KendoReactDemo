@@ -6,7 +6,9 @@ import {
     GridDataStateChangeEvent,
     GridItemChangeEvent,
     GridToolbar,
-    GridCellProps
+    GridCellProps,
+    GridPageChangeEvent,
+    GridFilterChangeEvent,
 } from "@progress/kendo-react-grid";
 import products from "../Configs/Products.json";
 import '@progress/kendo-theme-default/dist/all.css';
@@ -14,7 +16,7 @@ import { process, State } from "@progress/kendo-data-query";
 import { GridPDFExport } from "@progress/kendo-react-pdf";
 import { MyCommandCell } from "../Components/CrudOperations/MyCommandCell";
 import { Product } from "../Components/CrudOperations/Interfaces";
-
+import { filterBy, CompositeFilterDescriptor } from '@progress/kendo-data-query';
 import { Fade } from "@progress/kendo-react-animation";
 
 import {
@@ -28,6 +30,13 @@ import BasicForm from "../Components/BasicForm"
 interface State1 {
     success: boolean;
 }
+
+const initialFilter: CompositeFilterDescriptor  = {
+    logic: "and",
+    filters: [
+        { field: "EmployeeName", operator: "contains", value: "Surekha" }
+    ]
+}
 const styles = require("../Styles/Grid.css");
 const editField: string = "inEdit";
 
@@ -39,11 +48,18 @@ const initialDataState: State = {
     take: 10,
     skip: 0,
 };
-const ProductDetailsPdfExports = (): JSX.Element => {
 
+interface PageInterface {
+    skip: number;
+    take: number;
+  }
+const ProductDetailsPdfExports = (): JSX.Element => {
+    const [filter, setFilter] = React.useState(initialFilter);
     const anchor = React.useRef<HTMLButtonElement | null>(null);
     const [state, setState] = useState<AppState>({ data: [] })
-
+    const _grid = React.useRef<any>();
+    const [page, setPage] = React.useState<PageInterface>({ skip: 0, take: 10 });
+  
     const [notifystate, setNotifyState] = React.useState<State1>({
         success: false
     });
@@ -52,6 +68,10 @@ const ProductDetailsPdfExports = (): JSX.Element => {
         let data = getItems()
         setState({ data })
     }, [])
+
+       useEffect(()=>{
+           console.log("test data here", state.data)
+       }, [state.data])
 
     let gridPDFExport: GridPDFExport | null;
 
@@ -140,7 +160,8 @@ const ProductDetailsPdfExports = (): JSX.Element => {
     const [dataState, setDataState] = React.useState<State>(initialDataState);
 
     const [show, setShow] = React.useState(false);
-    console.log("data", show)
+    // console.log("data", filter, state.data)
+    const filterData =  state.data && filterBy(state.data, filter);
     const GridComp =
         <Grid
             id="prods"
@@ -148,7 +169,7 @@ const ProductDetailsPdfExports = (): JSX.Element => {
             style={{
                 height: "400px",
             }}
-            data={process(state.data, dataState)}
+            // data={process(state.data, dataState)}
             {...dataState}
             onDataStateChange={(e: GridDataStateChangeEvent) => {
                 setDataState(e.dataState);
@@ -156,6 +177,20 @@ const ProductDetailsPdfExports = (): JSX.Element => {
             // data={state.data}
             onItemChange={itemChange}
             editField={editField}
+
+
+        data={filterData && filterData.slice(page.skip, page.skip + page.take)}
+        filterable={true}
+        filter={filter}
+        onFilterChange={(e: GridFilterChangeEvent) => setFilter(e.filter)}
+
+
+        onPageChange={(e: GridPageChangeEvent) => setPage(e.page)}
+        total={state.data && state.data.length}
+        skip={page.skip}
+        // pageable={true}
+        pageSize={page.take}
+        ref={_grid}
         >
             <GridToolbar>
                 <button

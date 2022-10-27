@@ -56,7 +56,7 @@ const GridFilterExcelExport = (): JSX.Element => {
     const [gridData, setData] = React.useState<State>();
   
    React.useEffect(()=>{
-    let temp = filterBy(products, filter).slice(page.skip, page.skip + page.take)
+    let temp = filterBy(state.data, filter).slice(page.skip, page.skip + page.take)
     setData([...temp])
    }, [filter]);
     return (<>
@@ -64,14 +64,14 @@ const GridFilterExcelExport = (): JSX.Element => {
       <ExcelExport ref={_export}>
       <Grid
         style={{ height: '420px' }}
-        data={filterBy(products, filter).slice(page.skip, page.skip + page.take)}
+        data={filterBy(state.data, filter).slice(page.skip, page.skip + page.take)}
         filterable={true}
         filter={filter}
         onFilterChange={(e: GridFilterChangeEvent) => setFilter(e.filter)}
 
 
         onPageChange={(e: GridPageChangeEvent) => setPage(e.page)}
-        total={products.length}
+        total={state.data.length}
         skip={page.skip}
         pageable={true}
         pageSize={page.take}
