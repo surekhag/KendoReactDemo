@@ -110,7 +110,6 @@ const initialDataState: State = {
     skip: 0,
 };
 
-
         return (
             <div className="pagewrapper">
             <h3 className='headtext'> Employee Information</h3>

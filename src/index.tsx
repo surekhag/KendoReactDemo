@@ -7,10 +7,10 @@ import Products from "./Components/Products";
 import CrudOperations from "./Components/CrudOperations/CrudOperations"
 const App = () => (
   <>
-  <CrudOperations />
+  {/* <CrudOperations /> */}
   {/* <EmployeeDetails />
-  <BasicForm />
-  <Products /> */}
+  <BasicForm /> */}
+  <Products />
   </>
 );
 
