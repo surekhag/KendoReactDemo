@@ -17,25 +17,15 @@
     color: unset;
 }
 
-.k-form{
+/* .k-form{
     border: 1px solid black;
     border-radius: 15x;
     padding: 20px;
-}
-.k-form .k-form-legend {
-    font-weight: bold;
-}
+} */
+
 .k-button-solid-primary, .k-button-solid-primary:hover {
     background-color: blue;
 border-color: blue;
 }
 
 
-.k-form{
-    border: 1px solid black;
-    border-radius: 15x;
-    padding: 20px;
-}
-.k-form .k-form-legend {
-    font-weight: bold;
-}

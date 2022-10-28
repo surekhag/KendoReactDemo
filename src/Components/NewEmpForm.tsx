@@ -3,11 +3,11 @@ import { Form, Field, FormElement, FieldRenderProps, FormRenderProps } from '@pr
 import { Error } from '@progress/kendo-react-labels';
 import { Input } from '@progress/kendo-react-inputs';
 import { Button } from "@progress/kendo-react-buttons";
-
-import SharedButtons from "../SharedComps/SharedButtons"
+import {nameValidator, addressValidator, desnValidator, deptValidator} from "./Validators"
+// import SharedButtons from "../SharedComps/SharedButtons"
 import { Fade } from "@progress/kendo-react-animation";
 
-const Styles = require("../Styles/BasicForm.css");
+const Styles = require("../Styles/NewEmpForm.css");
 const emailRegex: RegExp = new RegExp(/\S+@\S+\.\S+/);
 import {
     Notification,
@@ -18,58 +18,20 @@ interface State {
     success: boolean;
 }
 
-const emailValidator = (value: string) => (emailRegex.test(value) ? "" : "Please enter a valid email.");
-const EmailInput = (fieldRenderProps: FieldRenderProps) => {
-    const { validationMessage, visited, ...others } = fieldRenderProps;
-    return (
-        <div>
-            <Input {...others} />
-            {
-                visited && validationMessage &&
-                (<Error>{validationMessage}</Error>)
-            }
-        </div>
-    );
-};
+// const emailValidator = (value: string) => (emailRegex.test(value) ? "" : "Please enter a valid email.");
+// const EmailInput = (fieldRenderProps: FieldRenderProps) => {
+//     const { validationMessage, visited, ...others } = fieldRenderProps;
+//     return (
+//         <div>
+//             <Input {...others} />
+//             {
+//                 visited && validationMessage &&
+//                 (<Error>{validationMessage}</Error>)
+//             }
+//         </div>
+//     );
+// };
 
-const NameRegex: RegExp = new RegExp(/^[A-Za-z0-9]+$/);
-const nameValidator = (value: string, field: string) => {
-    console.log("value", value, field)
-    if (NameRegex.test(value) && value && value.length > 0)
-        return ""
-    else {return "Please enter a valid Name."
-
-    }
-}
-
-const desnValidator = (value: string, field: string) => {
-    console.log("value", value, field)
-    if (NameRegex.test(value) && value && value.length > 0)
-        return ""
-    else {
-        return "Please enter a valid Designation."
-
-    }
-}
-const deptValidator = (value: string, field: string) => {
-    console.log("value", value, field)
-    if (NameRegex.test(value) && value && value.length > 0)
-        return ""
-    else {
-        return "Please enter a valid Department."
-        
-    }
-}
-
-const addressValidator = (value: string, field: string) => {
-    console.log("value", value, field)
-    if (NameRegex.test(value) && value && value.length > 0)
-        return ""
-    else {
-        return "Please enter a valid Address."
-        
-    }
-}
 
 const NameInput = (fieldRenderProps: FieldRenderProps) => {
     const { validationMessage, visited, ...others } = fieldRenderProps;
@@ -90,8 +52,8 @@ const BasicForm = (props) => {
     const [isDisplayed, setIsDisplayed] = useState(false);
     const handleSubmit = (dataItem: { [name: string]: any }) => {
         let temp = { ...dataItem, inEdit: true, Active: true }
-      
-        add(dataItem)
+
+        add(temp)
         setShow(false)
         setNotifyState({ success: true })
         const node = document.getElementById("clear")
@@ -104,7 +66,7 @@ const BasicForm = (props) => {
 
 
     return (<>
-        <h3>Add New Employee</h3>
+        <h3 className= "addEmpHeader">Add New Employee</h3>
         <Form
             onSubmit={handleSubmit}
             render={(formRenderProps: FormRenderProps) => (
@@ -126,10 +88,10 @@ const BasicForm = (props) => {
                             <Field name={'Department'} component={NameInput} label={'Department'} validator={deptValidator} />
                         </div>
 
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <Field name={"email"} type={"email"} component={EmailInput} label={"Email"}
                                 validator={emailValidator} />
-                        </div>
+                        </div> */}
                     </fieldset>
                     <div className="k-form-buttons">
                         <Button

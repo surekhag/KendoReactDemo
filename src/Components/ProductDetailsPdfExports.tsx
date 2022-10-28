@@ -10,7 +10,7 @@ import {
     GridPageChangeEvent,
     GridFilterChangeEvent,
 } from "@progress/kendo-react-grid";
-import products from "../Configs/Products.json";
+// import products from "../Configs/Products.json";
 import '@progress/kendo-theme-default/dist/all.css';
 import { process, State } from "@progress/kendo-data-query";
 import { GridPDFExport } from "@progress/kendo-react-pdf";
@@ -26,7 +26,7 @@ import {
 
 import { Popup } from "@progress/kendo-react-popup";
 import { insertItem, getItems, updateItem, deleteItem } from "../Components/CrudOperations/Services";
-import BasicForm from "../Components/BasicForm"
+import BasicForm from "./NewEmpForm"
 interface State1 {
     success: boolean;
 }

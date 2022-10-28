@@ -1,4 +1,4 @@
-import  sampleProducts  from "./SampleProducts.json";
+import  sampleProducts  from "../../Configs/SampleProducts.json";
 
 let data = [...sampleProducts];
 

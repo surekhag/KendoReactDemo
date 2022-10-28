@@ -1,0 +1,23 @@
+.k-form{   
+    padding: 20px;
+}
+.k-form .k-form-legend {
+    font-weight: bold;
+}
+.k-popup {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15x;
+}
+.addEmpHeader {
+    text-align: center;
+}
+.k-form .k-form-legend {
+    font-weight: bold;
+}
+.k-form .k-form-legend, .k-form-inline .k-form-legend {
+    border: none;
+}
+.k-floating-label-container.k-empty > .k-label {
+    color: gray;
+}
