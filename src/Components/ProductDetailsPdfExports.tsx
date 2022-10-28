@@ -31,7 +31,7 @@ interface State1 {
     success: boolean;
 }
 
-const initialFilter: CompositeFilterDescriptor  = {
+const initialFilter: CompositeFilterDescriptor = {
     logic: "and",
     filters: [
         { field: "EmployeeName", operator: "contains", value: "Surekha" }
@@ -52,14 +52,14 @@ const initialDataState: State = {
 interface PageInterface {
     skip: number;
     take: number;
-  }
+}
 const ProductDetailsPdfExports = (): JSX.Element => {
     const [filter, setFilter] = React.useState(initialFilter);
     const anchor = React.useRef<HTMLButtonElement | null>(null);
     const [state, setState] = useState<AppState>({ data: [] })
     const _grid = React.useRef<any>();
     const [page, setPage] = React.useState<PageInterface>({ skip: 0, take: 10 });
-  
+
     const [notifystate, setNotifyState] = React.useState<State1>({
         success: false
     });
@@ -69,9 +69,9 @@ const ProductDetailsPdfExports = (): JSX.Element => {
         setState({ data })
     }, [])
 
-       useEffect(()=>{
-           console.log("test data here", state.data)
-       }, [state.data])
+    useEffect(() => {
+        console.log("test data here", state.data)
+    }, [state.data])
 
     let gridPDFExport: GridPDFExport | null;
 
@@ -161,7 +161,7 @@ const ProductDetailsPdfExports = (): JSX.Element => {
 
     const [show, setShow] = React.useState(false);
     // console.log("data", filter, state.data)
-    const filterData =  state.data && filterBy(state.data, filter);
+    const filterData = state.data && filterBy(state.data, filter);
     const GridComp =
         <Grid
             id="prods"
@@ -179,18 +179,17 @@ const ProductDetailsPdfExports = (): JSX.Element => {
             editField={editField}
 
 
-        data={filterData && filterData.slice(page.skip, page.skip + page.take)}
-        filterable={true}
-        filter={filter}
-        onFilterChange={(e: GridFilterChangeEvent) => setFilter(e.filter)}
+            data={filterData && filterData.slice(page.skip, page.skip + page.take)}
+            filterable={true}
+            filter={filter}
+            onFilterChange={(e: GridFilterChangeEvent) => setFilter(e.filter)}
 
 
-        onPageChange={(e: GridPageChangeEvent) => setPage(e.page)}
-        total={state.data && state.data.length}
-        skip={page.skip}
-        // pageable={true}
-        pageSize={page.take}
-        ref={_grid}
+            onPageChange={(e: GridPageChangeEvent) => setPage(e.page)}
+            total={state.data && state.data.length}
+            skip={page.skip}
+            pageSize={page.take}
+            ref={_grid}
         >
             <GridToolbar>
                 <button
@@ -210,9 +209,9 @@ const ProductDetailsPdfExports = (): JSX.Element => {
                 </button>
                 <Popup anchor={anchor.current} show={show} popupClass={"popup-content"}>
                     <BasicForm setShow={setShow} setNotifyState={setNotifyState}
-                    data={state.data}
-                    setState= {setState}
-                    add={add} />
+                        data={state.data}
+                        setState={setState}
+                        add={add} />
                 </Popup>
 
                 <NotificationGroup
@@ -238,9 +237,6 @@ const ProductDetailsPdfExports = (): JSX.Element => {
             </GridToolbar>
             <GridColumn field="EmployeeID" title="ID" width="40px" editable={false} />
             <GridColumn field="EmployeeName" title="Employee Name" width="250px" />
-            {/* <GridColumn field="Category.CategoryName" title="CategoryName" />
-            <GridColumn field="UnitPrice" title="Price" />
-            <GridColumn field="UnitsInStock" title="In stock" /> */}
             <GridColumn
                 field="Designation"
                 title="Designation"

@@ -2,7 +2,6 @@ const NameRegex: RegExp = new RegExp(/^[A-Za-z0-9]+$/);
 
 
 export const nameValidator = (value: string) => {
-    
     if (NameRegex.test(value) && value && value.length > 0)
         return ""
     else {
@@ -12,7 +11,7 @@ export const nameValidator = (value: string) => {
 }
 
 export const desnValidator = (value: string) => {
-    
+
     if (NameRegex.test(value) && value && value.length > 0)
         return ""
     else {
@@ -21,7 +20,7 @@ export const desnValidator = (value: string) => {
     }
 }
 export const deptValidator = (value: string) => {
-    
+
     if (NameRegex.test(value) && value && value.length > 0)
         return ""
     else {
@@ -31,7 +30,7 @@ export const deptValidator = (value: string) => {
 }
 
 export const addressValidator = (value: string) => {
-    
+
     if (NameRegex.test(value) && value && value.length > 0)
         return ""
     else {
