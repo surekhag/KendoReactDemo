@@ -5,12 +5,13 @@
     font-weight: bold;
 }
 .k-popup {
-    padding: 10px;
+    padding: 10px 25px;
     border: 1px solid black;
     border-radius: 15x;
 }
 .addEmpHeader {
     text-align: center;
+    margin-bottom: 0 !important;
 }
 .k-form .k-form-legend {
     font-weight: bold;
@@ -20,4 +21,19 @@
 }
 .k-floating-label-container.k-empty > .k-label {
     color: gray;
+}
+.k-animation-container {
+    left: 50%;
+}
+.k-form-buttons  button, .k-form-buttons  button:hover{
+    background-color: blue;
+    color: white;
+}
+.k-form .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.k-form .k-form-fieldset {
+    margin-top: 10px;
 }

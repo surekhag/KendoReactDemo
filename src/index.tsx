@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import '@progress/kendo-theme-default/dist/all.css';
-import ProductDetailsPdfExports from "./Components/ProductDetailsPdfExports";
+import EmployeeDetails from "./Components/EmployeeDetails";
 
 const App = () => (
   <>
-  <ProductDetailsPdfExports />
+  <EmployeeDetails />
   </>
 );
 

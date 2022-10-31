@@ -14,19 +14,21 @@ import {
 import '@progress/kendo-theme-default/dist/all.css';
 import { process, State } from "@progress/kendo-data-query";
 import { GridPDFExport } from "@progress/kendo-react-pdf";
-import { MyCommandCell } from "../Components/CrudOperations/MyCommandCell";
-import { Product } from "../Components/CrudOperations/Interfaces";
+import { MyCommandCell } from "./CrudOperations/MyCommandCell";
+import { Product } from "./CrudOperations/Interfaces";
 import { filterBy, CompositeFilterDescriptor } from '@progress/kendo-data-query';
 import { Fade } from "@progress/kendo-react-animation";
-
+import { Checkbox } from "@progress/kendo-react-inputs"
 import {
     Notification,
     NotificationGroup,
 } from "@progress/kendo-react-notification";
 
 import { Popup } from "@progress/kendo-react-popup";
-import { insertItem, getItems, updateItem, deleteItem } from "../Components/CrudOperations/Services";
+import { insertItem, getItems, updateItem, deleteItem } from "./CrudOperations/Services";
 import BasicForm from "./NewEmpForm"
+import { Input } from "@progress/kendo-react-inputs";
+import { setData } from "@progress/kendo-intl";
 interface State1 {
     success: boolean;
 }
@@ -34,7 +36,9 @@ interface State1 {
 const initialFilter: CompositeFilterDescriptor = {
     logic: "and",
     filters: [
-        { field: "EmployeeName", operator: "contains", value: "Surekha" }
+        // { field: "EmployeeName", 
+        // operator: "contains", 
+        // value: "Surekha" }
     ]
 }
 const styles = require("../Styles/Grid.css");
@@ -53,13 +57,13 @@ interface PageInterface {
     skip: number;
     take: number;
 }
-const ProductDetailsPdfExports = (): JSX.Element => {
+const EmployeeDetails = (): JSX.Element => {
     const [filter, setFilter] = React.useState(initialFilter);
     const anchor = React.useRef<HTMLButtonElement | null>(null);
     const [state, setState] = useState<AppState>({ data: [] })
     const _grid = React.useRef<any>();
     const [page, setPage] = React.useState<PageInterface>({ skip: 0, take: 10 });
-
+    const [FilteredData, setFilteredData] = useState([]);
     const [notifystate, setNotifyState] = React.useState<State1>({
         success: false
     });
@@ -67,11 +71,17 @@ const ProductDetailsPdfExports = (): JSX.Element => {
     useEffect(() => {
         let data = getItems()
         setState({ data })
+        setFilteredData([...data])
     }, [])
 
     useEffect(() => {
-        console.log("test data here", state.data)
-    }, [state.data])
+        const FilteredDataFinal = FilteredData.filter(item => {
+            return item.checked == true
+        })
+        FilteredDataFinal.length > 0
+        setState({ data: FilteredData })
+        console.log("Filtered Final", FilteredDataFinal, FilteredDataFinal.length)
+    }, [FilteredData, state.data])
 
     let gridPDFExport: GridPDFExport | null;
 
@@ -157,10 +167,29 @@ const ProductDetailsPdfExports = (): JSX.Element => {
             editField={editField}
         />
     );
+    const setSelectValue = (props) => {
+        const record = state.data.findIndex(item => item.EmployeeID == props.EmployeeID);
+        const filteredInfo = FilteredData;
+
+        let val;
+        if (props.EmployeeID == state.data[record].EmployeeID) {
+            if (filteredInfo[record].checked == false) {
+                filteredInfo[record].checked = true
+            }
+            else if (filteredInfo[record].checked == true) {
+                filteredInfo[record].checked = false
+            }
+        }  // setFilteredData(filteredInfo);
+        setState(filteredInfo)
+
+    }
+    const SelectRecord = (props: GridCellProps) => {
+        return <Checkbox defaultChecked={false} onChange={() => setSelectValue(props.dataItem)}
+            value={props.dataItem.checked} />
+    }
     const [dataState, setDataState] = React.useState<State>(initialDataState);
 
     const [show, setShow] = React.useState(false);
-    // console.log("data", filter, state.data)
     const filterData = state.data && filterBy(state.data, filter);
     const GridComp =
         <Grid
@@ -235,6 +264,15 @@ const ProductDetailsPdfExports = (): JSX.Element => {
                     </Fade>
                 </NotificationGroup>
             </GridToolbar>
+            <GridColumn
+                field="checked"
+                title="Select Field"
+                width="40px"
+                // editable={true}
+                cell={SelectRecord}
+                editor="boolean" />
+            {/* <GridColumn field="Active" title="Active" editor="boolean" /> */}
+
             <GridColumn field="EmployeeID" title="ID" width="40px" editable={false} />
             <GridColumn field="EmployeeName" title="Employee Name" width="250px" />
             <GridColumn
@@ -257,7 +295,7 @@ const ProductDetailsPdfExports = (): JSX.Element => {
             <GridColumn cell={CommandCell} width="200px" />
         </Grid>
 
-
+    {/* <CommandCell /> */ }
     return (<div className="pagewrapper">
         <h3 className='headtext'> Employee Information</h3>
         {GridComp}
@@ -266,4 +304,4 @@ const ProductDetailsPdfExports = (): JSX.Element => {
         </GridPDFExport>
     </div>);
 }
-export default ProductDetailsPdfExports;
+export default EmployeeDetails;

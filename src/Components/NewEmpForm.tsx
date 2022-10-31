@@ -9,14 +9,8 @@ import { Fade } from "@progress/kendo-react-animation";
 
 const Styles = require("../Styles/NewEmpForm.css");
 const emailRegex: RegExp = new RegExp(/\S+@\S+\.\S+/);
-import {
-    Notification,
-    NotificationGroup,
-} from "@progress/kendo-react-notification";
 
-interface State {
-    success: boolean;
-}
+
 
 // const emailValidator = (value: string) => (emailRegex.test(value) ? "" : "Please enter a valid email.");
 // const EmailInput = (fieldRenderProps: FieldRenderProps) => {
@@ -66,13 +60,16 @@ const BasicForm = (props) => {
 
 
     return (<>
-        <h3 className= "addEmpHeader">Add New Employee</h3>
         <Form
             onSubmit={handleSubmit}
             render={(formRenderProps: FormRenderProps) => (
                 <FormElement style={{ maxWidth: 650 }}>
+                      <div className="k-form-buttons close">
+                      <Button onClick={closeForm}>X</Button>
+
+                    </div>
                     <fieldset className={'k-form-fieldset'}>
-                        <legend className={'k-form-legend sub-text'}>Please fill in the details:</legend>
+                        <legend className={'k-form-legend addEmpHeader'}>Add New Employee Details</legend>
                         <div className="mb-3">
                             <Field name={'EmployeeName'} component={NameInput} label={'Employee Name'}
                                 validator={nameValidator} />
@@ -103,7 +100,7 @@ const BasicForm = (props) => {
                         </Button>
 
                         <Button id="clear" onClick={formRenderProps.onFormReset}>Clear</Button>
-                        <Button onClick={closeForm}>Close</Button>
+                        {/* <Button onClick={closeForm}>Close</Button> */}
 
                     </div>
                 </FormElement>
