@@ -129,6 +129,7 @@ const EmployeeDetails = (): JSX.Element => {
     };
 
     const enterEdit = (dataItem: Product) => {
+        console.log("in edit")
         setState({
             data: state.data.map(item =>
                 item.EmployeeID === dataItem.EmployeeID ? { ...item, inEdit: true } : item
@@ -268,7 +269,6 @@ const EmployeeDetails = (): JSX.Element => {
                 field="checked"
                 title="Select Field"
                 width="40px"
-                // editable={true}
                 cell={SelectRecord}
                 editor="boolean" />
             {/* <GridColumn field="Active" title="Active" editor="boolean" /> */}
