@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { Form, Field, FormElement, FieldRenderProps, FormRenderProps } from '@progress/kendo-react-form';
 import { Error } from '@progress/kendo-react-labels';
 import { Input } from '@progress/kendo-react-inputs';
@@ -41,17 +41,24 @@ const NameInput = (fieldRenderProps: FieldRenderProps) => {
 };
 
 const BasicForm = (props) => {
-    const { setShow, setNotifyState, data, setState, add } = props;
-
+    const { setShow, setNotifyState, data, setState, add,application, edit, update, discard,dataToEdit } = props;
+    console.log("form ptop", dataToEdit)
     const [isDisplayed, setIsDisplayed] = useState(false);
-    const handleSubmit = (dataItem: { [name: string]: any }) => {
-        let temp = { ...dataItem, inEdit: true, Active: true }
 
+    const handleSubmit = (dataItem: { [name: string]: any }) => {
+
+        if(application=="addNewRecord"){
+        let temp = { ...dataItem, inEdit: true, Active: true }
         add(temp)
         setShow(false)
         setNotifyState({ success: true })
         const node = document.getElementById("clear")
         node.click();
+    }
+    if(application=="editRecord"){
+
+    }
+
     }
 
     const closeForm = () => {
@@ -69,7 +76,9 @@ const BasicForm = (props) => {
 
                     </div>
                     <fieldset className={'k-form-fieldset'}>
-                        <legend className={'k-form-legend addEmpHeader'}>Add New Employee Details</legend>
+                        <legend className={'k-form-legend addEmpHeader'}>
+                            {application=="addNewRecord" ? "Add New Employee Details" :"Edit Employee Details"}
+                             </legend>
                         <div className="mb-3">
                             <Field name={'EmployeeName'} component={NameInput} label={'Employee Name'}
                                 validator={nameValidator} />
@@ -96,7 +105,7 @@ const BasicForm = (props) => {
                             className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base"
                             disabled={!formRenderProps.allowSubmit}
                         >
-                            Submit
+                            {application=="addNewRecord" ?  "Add" : "Update"}
                         </Button>
 
                         <Button id="clear" onClick={formRenderProps.onFormReset}>Clear</Button>
@@ -109,4 +118,4 @@ const BasicForm = (props) => {
     </>
     );
 };
-export default BasicForm;
+export default memo(BasicForm);

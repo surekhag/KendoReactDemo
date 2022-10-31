@@ -9,6 +9,7 @@ import {
     GridCellProps,
     GridPageChangeEvent,
     GridFilterChangeEvent,
+    GridSortChangeEvent
 } from "@progress/kendo-react-grid";
 // import products from "../Configs/Products.json";
 import '@progress/kendo-theme-default/dist/all.css';
@@ -23,7 +24,7 @@ import {
     Notification,
     NotificationGroup,
 } from "@progress/kendo-react-notification";
-
+import { orderBy, SortDescriptor } from "@progress/kendo-data-query";
 import { Popup } from "@progress/kendo-react-popup";
 import { insertItem, getItems, updateItem, deleteItem } from "./CrudOperations/Services";
 import BasicForm from "./NewEmpForm"
@@ -32,7 +33,9 @@ import { setData } from "@progress/kendo-intl";
 interface State1 {
     success: boolean;
 }
-
+const initialSort: Array<SortDescriptor> = [
+    { field: "EmployeeName", dir: "asc" },
+  ];
 const initialFilter: CompositeFilterDescriptor = {
     logic: "and",
     filters: [
@@ -58,6 +61,7 @@ interface PageInterface {
     take: number;
 }
 const EmployeeDetails = (): JSX.Element => {
+    const [sort, setSort] = React.useState(initialSort);
     const [filter, setFilter] = React.useState(initialFilter);
     const anchor = React.useRef<HTMLButtonElement | null>(null);
     const [state, setState] = useState<AppState>({ data: [] })
@@ -129,12 +133,15 @@ const EmployeeDetails = (): JSX.Element => {
     };
 
     const enterEdit = (dataItem: Product) => {
-        console.log("in edit")
-        setState({
-            data: state.data.map(item =>
-                item.EmployeeID === dataItem.EmployeeID ? { ...item, inEdit: true } : item
-            )
-        });
+        setShow(true)
+        setTargetForm("editRecord")
+        setDataToEdit(dataItem)
+        console.log("in edit", dataItem)
+        // setState({
+        //     data: state.data.map(item =>
+        //         item.EmployeeID === dataItem.EmployeeID ? { ...item, inEdit: true } : item
+        //     )
+        // });
     };
 
     const itemChange = (event: GridItemChangeEvent) => {
@@ -150,6 +157,7 @@ const EmployeeDetails = (): JSX.Element => {
     const addNew = () => {
         const newDataItem = { inEdit: true, Active: false };
         setShow(true)
+        setTargetForm("addNewRecord");
         // setState({
         //     data: [newDataItem, ...state.data]
         // });
@@ -182,8 +190,8 @@ const EmployeeDetails = (): JSX.Element => {
             }
         }  // setFilteredData(filteredInfo);
         setState(filteredInfo)
-
     }
+    
     const SelectRecord = (props: GridCellProps) => {
         return <Checkbox defaultChecked={false} onChange={() => setSelectValue(props.dataItem)}
             value={props.dataItem.checked} />
@@ -191,6 +199,8 @@ const EmployeeDetails = (): JSX.Element => {
     const [dataState, setDataState] = React.useState<State>(initialDataState);
 
     const [show, setShow] = React.useState(false);
+    const [dataToEdit, setDataToEdit]= useState();
+    const [targetForm, setTargetForm] = React.useState(null);
     const filterData = state.data && filterBy(state.data, filter);
     const GridComp =
         <Grid
@@ -207,9 +217,11 @@ const EmployeeDetails = (): JSX.Element => {
             // data={state.data}
             onItemChange={itemChange}
             editField={editField}
-
-
-            data={filterData && filterData.slice(page.skip, page.skip + page.take)}
+            sortable={true}
+            sort = {sort}
+            onSortChange={(e: GridSortChangeEvent) => {
+                setSort(e.sort)}}
+            data={orderBy(filterData && filterData.slice(page.skip, page.skip + page.take), sort)}
             filterable={true}
             filter={filter}
             onFilterChange={(e: GridFilterChangeEvent) => setFilter(e.filter)}
@@ -241,7 +253,14 @@ const EmployeeDetails = (): JSX.Element => {
                     <BasicForm setShow={setShow} setNotifyState={setNotifyState}
                         data={state.data}
                         setState={setState}
-                        add={add} />
+                        add={add}
+                        edit={enterEdit}
+                        application= {targetForm}
+                        discard={discard}
+                        update={update}
+                        cancel={cancel}
+                        dataToEdit={dataToEdit}
+                         />
                 </Popup>
 
                 <NotificationGroup
