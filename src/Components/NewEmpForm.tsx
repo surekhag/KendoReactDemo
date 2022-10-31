@@ -1,9 +1,9 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import { Form, Field, FormElement, FieldRenderProps, FormRenderProps } from '@progress/kendo-react-form';
 import { Error } from '@progress/kendo-react-labels';
 import { Input } from '@progress/kendo-react-inputs';
 import { Button } from "@progress/kendo-react-buttons";
-import {nameValidator, addressValidator, desnValidator, deptValidator} from "./Validators"
+import { nameValidator, addressValidator, desnValidator, deptValidator } from "./Validators"
 // import SharedButtons from "../SharedComps/SharedButtons"
 import { Fade } from "@progress/kendo-react-animation";
 
@@ -28,10 +28,11 @@ const emailRegex: RegExp = new RegExp(/\S+@\S+\.\S+/);
 
 
 const NameInput = (fieldRenderProps: FieldRenderProps) => {
-    const { validationMessage, visited, ...others } = fieldRenderProps;
+    const { validationMessage, visited, data, ...others } = fieldRenderProps;
+    // console.log("name ", fieldRenderProps)
     return (
         <div>
-            <Input {...others} />
+            <Input {...others} value={data} />
             {
                 visited && validationMessage &&
                 (<Error>{validationMessage}</Error>)
@@ -41,23 +42,34 @@ const NameInput = (fieldRenderProps: FieldRenderProps) => {
 };
 
 const BasicForm = (props) => {
-    const { setShow, setNotifyState, data, setState, add,application, edit, update, discard,dataToEdit } = props;
-    console.log("form ptop", dataToEdit)
+    const { setShow, setNotifyState, data, setState, add, application, edit, update, discard, dataToEdit } = props;
+    // console.log("form ptop", dataToEdit)
+    const [EmpName, setEmpName] = useState(dataToEdit.EmployeeName);
+    const [department, setDepartment] = useState(dataToEdit.Department)
+    const [designation, setDesignation] = useState(dataToEdit.Designation)
+    const [address, setAddress] = useState(dataToEdit.Address)
     const [isDisplayed, setIsDisplayed] = useState(false);
-
     const handleSubmit = (dataItem: { [name: string]: any }) => {
+        // console.log("dataItem",dataItem)
+        if (application == "addNewRecord") {
+            let temp = { ...dataItem, inEdit: true, Active: true }
+            add(temp)
+            setShow(false)
+            setNotifyState({ success: true })
+            const node = document.getElementById("clear")
+            node.click();
+        }
+        if (application == "editRecord") {
+            // console.log("inside update", dataToEdit)
+            let temp = { EmployeeID: dataToEdit.EmployeeID, ...dataItem, inEdit: true, }
 
-        if(application=="addNewRecord"){
-        let temp = { ...dataItem, inEdit: true, Active: true }
-        add(temp)
-        setShow(false)
-        setNotifyState({ success: true })
-        const node = document.getElementById("clear")
-        node.click();
-    }
-    if(application=="editRecord"){
-
-    }
+            //add all fields here ..
+            update(temp)
+            setShow(false)
+            setNotifyState({ success: true })
+            const node = document.getElementById("clear")
+            node.click();
+        }
 
     }
 
@@ -71,27 +83,40 @@ const BasicForm = (props) => {
             onSubmit={handleSubmit}
             render={(formRenderProps: FormRenderProps) => (
                 <FormElement style={{ maxWidth: 650 }}>
-                      <div className="k-form-buttons close">
-                      <Button onClick={closeForm}>X</Button>
+                    <div className="k-form-buttons close">
+                        <Button onClick={closeForm}>X</Button>
 
                     </div>
                     <fieldset className={'k-form-fieldset'}>
                         <legend className={'k-form-legend addEmpHeader'}>
-                            {application=="addNewRecord" ? "Add New Employee Details" :"Edit Employee Details"}
-                             </legend>
+                            {application == "addNewRecord" ? "Add New Employee Details" : "Edit Employee Details"}
+                        </legend>
                         <div className="mb-3">
-                            <Field name={'EmployeeName'} component={NameInput} label={'Employee Name'}
-                                validator={nameValidator} />
+                            <Field name={'EmployeeName'} component={NameInput}
+                                data={EmpName}
+                                label={'Employee Name'}
+                                onChange={(value) => {
+                                    console.log("name", value.value)
+                                    setEmpName(value.value)
+                                }}
+                                validator={() => nameValidator(EmpName)} />
                         </div>
 
                         <div className="mb-3">
-                            <Field name={'Designation'} component={NameInput} label={'Designation'} validator={desnValidator} />
+                            <Field name={'Designation'}
+                                data={designation}
+                                component={NameInput}
+                                onChange={value => setDesignation(value.value)} label={'Designation'} validator={() => desnValidator(designation)} />
                         </div>
                         <div className="mb-3">
-                            <Field name={'Address'} component={NameInput} label={'Address'} validator={addressValidator} />
+                            <Field name={'Address'}
+                                data={address}
+                                onChange={value => setAddress(value.value)} component={NameInput} label={'Address'} validator={() => addressValidator(address)} />
                         </div>
                         <div className="mb-3">
-                            <Field name={'Department'} component={NameInput} label={'Department'} validator={deptValidator} />
+                            <Field name={'Department'}
+                                data={department}
+                                onChange={value => setDepartment(value.value)} component={NameInput} label={'Department'} validator={() => deptValidator(department)} />
                         </div>
 
                         {/* <div className="mb-3">
@@ -100,16 +125,20 @@ const BasicForm = (props) => {
                         </div> */}
                     </fieldset>
                     <div className="k-form-buttons">
+
+
                         <Button
                             type={'submit'}
                             className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base"
                             disabled={!formRenderProps.allowSubmit}
+                            onClick={() => { console.log("update", formRenderProps) }}
                         >
-                            {application=="addNewRecord" ?  "Add" : "Update"}
+                            {application == "addNewRecord" ? "Add" : "Update"}
                         </Button>
 
-                        <Button id="clear" onClick={formRenderProps.onFormReset}>Clear</Button>
-                        {/* <Button onClick={closeForm}>Close</Button> */}
+                        <Button id="clear" onClick={formRenderProps.onFormReset}>
+                            {application == "addNewRecord" ? "Clear" : "Cancel"}
+                        </Button>
 
                     </div>
                 </FormElement>

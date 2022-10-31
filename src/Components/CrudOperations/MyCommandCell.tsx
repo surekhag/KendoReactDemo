@@ -4,7 +4,7 @@ export const MyCommandCell = props => {
   const { dataItem } = props;
   const inEdit = dataItem[props.editField];
   const isNewItem = dataItem.EmployeeID === undefined;
-console.log("in edit comp", inEdit, props,dataItem)
+// console.log("in edit comp", inEdit, props,dataItem)
   return inEdit ? (
     <td className="k-command-cell">
       <button

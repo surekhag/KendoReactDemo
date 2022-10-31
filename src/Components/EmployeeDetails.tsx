@@ -30,6 +30,7 @@ import { insertItem, getItems, updateItem, deleteItem } from "./CrudOperations/S
 import BasicForm from "./NewEmpForm"
 import { Input } from "@progress/kendo-react-inputs";
 import { setData } from "@progress/kendo-intl";
+import { stat } from "fs";
 interface State1 {
     success: boolean;
 }
@@ -85,7 +86,7 @@ const EmployeeDetails = (): JSX.Element => {
         FilteredDataFinal.length > 0
         setState({ data: FilteredData })
         console.log("Filtered Final", FilteredDataFinal, FilteredDataFinal.length)
-    }, [FilteredData, state.data])
+    }, [FilteredData])
 
     let gridPDFExport: GridPDFExport | null;
 
@@ -109,11 +110,16 @@ const EmployeeDetails = (): JSX.Element => {
     };
 
     const update = (dataItem: Product) => {
+        console.log("in short", dataItem)
         dataItem.inEdit = false;
-        const data = updateItem(dataItem);
-        setState({ data });
+        const newData = updateItem(dataItem);
+        console.log("data post update", newData);
+        setState({ data: newData });
     };
 
+    useEffect(()=>{
+        console.log("data updated")
+    },[state.data])
     // Local state operations
     const discard = () => {
         const data = [...state.data];
@@ -315,6 +321,7 @@ const EmployeeDetails = (): JSX.Element => {
         </Grid>
 
     {/* <CommandCell /> */ }
+    console.log("state data", state.data)
     return (<div className="pagewrapper">
         <h3 className='headtext'> Employee Information</h3>
         {GridComp}
