@@ -40,7 +40,7 @@ const NameInput = (fieldRenderProps: FieldRenderProps) => {
     );
 };
 
-const BasicForm = (props) => {
+const EmployeeForm = (props) => {
     const { setShow, setNotifyState, data, setState, add, application, edit, update, discard, dataToEdit,setDataToEdit } = props;
     const [EmpName, setEmpName] = useState(dataToEdit && dataToEdit.EmployeeName);
     const [department, setDepartment] = useState(dataToEdit && dataToEdit.Department)
@@ -170,4 +170,4 @@ const BasicForm = (props) => {
     </>
     );
 };
-export default memo(BasicForm);
+export default memo(EmployeeForm);

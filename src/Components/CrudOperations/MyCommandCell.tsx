@@ -1,32 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, memo } from "react";
 import { Popup } from "@progress/kendo-react-popup";
-import {
-  Notification,
-  NotificationGroup,
-} from "@progress/kendo-react-notification";
-import { Fade } from "@progress/kendo-react-animation";
-interface State1 {
-  success: boolean;
-}
 
-export const MyCommandCell = props => {
-  const { dataItem } = props;
+ export const MyCommandCell = props => {
+  const { dataItem,setItemDel,itemDel } = props;
   const inEdit = dataItem[props.editField];
   const isNewItem = dataItem.EmployeeID === undefined;
   const anchor = useRef<HTMLButtonElement | null>(null);
 
   const [show, setShow] = useState(false);
-  const [notifystate, setNotifyState] = React.useState<State1>({
-    success: false
-  });
-  const [itemDel, setItemDel] = React.useState(false);
+
   useEffect(() => {
     if (itemDel == true) {
       setShow(false)
-      setNotifyState({ success: true });
     }
   }, [itemDel])
-  const { success } = notifystate;
 
   return inEdit ? (
     <td className="k-command-cell">
@@ -69,7 +56,7 @@ export const MyCommandCell = props => {
               className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
               onClick={() => {
                 props.remove(dataItem);
-                setNotifyState({ success: true })
+                setItemDel(true)
               }
               }>Ok</button>
             <button className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
@@ -78,29 +65,7 @@ export const MyCommandCell = props => {
               }}
             >Cancel</button></td>
         </div>
-
       </Popup>
-      <NotificationGroup
-        style={{
-          left: "-140px",
-          top: "0px",
-          alignItems: "flex-start",
-          flexWrap: "wrap-reverse",
-        }}
-      >
-        <Fade>
-          {success && (
-            <Notification
-              type={{ style: "success", icon: true }}
-              closable={true}
-              onClose={() => setNotifyState({ success: false })}
-            >
-              <span>Employee Info has been removed!</span>
-            </Notification>
-          )}
-        </Fade>
-      </NotificationGroup>
-
-    </td>
+     </td>
   );
 };

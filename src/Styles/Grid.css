@@ -15,6 +15,10 @@
     padding-top: 10px;
     text-align: center;
     color: unset;
+    background-color: #3d3dbc;
+    margin: 0 0 20px 0;
+    color: white;
+    padding: 15px 0;
 }
 
 /* .k-form{
@@ -42,4 +46,9 @@ border-color: blue;
 }
 .selectRecord {
     padding-left: 20px;
+}
+.k-checkbox:checked, .k-checkbox.k-checked {
+    border-color: #7dabe2;
+    color: white;
+    background-color: #7dabe2;
 }

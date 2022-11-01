@@ -1,5 +1,5 @@
 // ES2015 module syntax
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import {
     Grid,
     GridColumn,
@@ -14,6 +14,7 @@ import {
 // import products from "../Configs/Products.json";
 import '@progress/kendo-theme-default/dist/all.css';
 import { process, State } from "@progress/kendo-data-query";
+import { DelNotifications } from "./Notifications"
 import { GridPDFExport } from "@progress/kendo-react-pdf";
 import { MyCommandCell } from "./CrudOperations/MyCommandCell";
 import { Product } from "./CrudOperations/Interfaces";
@@ -27,7 +28,7 @@ import {
 import { orderBy, SortDescriptor } from "@progress/kendo-data-query";
 import { Popup } from "@progress/kendo-react-popup";
 import { insertItem, getItems, updateItem, deleteItem } from "./CrudOperations/Services";
-import BasicForm from "./NewEmpForm"
+import EmployeeForm from "./NewEmpForm"
 import { Input } from "@progress/kendo-react-inputs";
 import { setData } from "@progress/kendo-intl";
 import { stat } from "fs";
@@ -37,6 +38,9 @@ interface State1 {
 const initialSort: Array<SortDescriptor> = [
     { field: "EmployeeName", dir: "asc" },
 ];
+interface NotifyState {
+    success: boolean;
+}
 const initialFilter: CompositeFilterDescriptor = {
     logic: "and",
     filters: [
@@ -69,7 +73,7 @@ const EmployeeDetails = (): JSX.Element => {
     const _grid = React.useRef<any>();
     const [page, setPage] = React.useState<PageInterface>({ skip: 0, take: 10 });
     const [FilteredData, setFilteredData] = useState([]);
-    const [notifystate, setNotifyState] = React.useState<State1>({
+    const [notifystate, setNotifyState] = useState<State1>({
         success: false
     });
     const { success } = notifystate;
@@ -78,7 +82,11 @@ const EmployeeDetails = (): JSX.Element => {
     const [targetForm, setTargetForm] = React.useState(null);
     const filterData = state.data && filterBy(state.data, filter);
     let gridPDFExport: GridPDFExport | null;
-    const [updateFilters, setUpdateFilters]= useState(false)
+    const [updateFilters, setUpdateFilters] = useState(false)
+    const [notifyDelstate, setNotifyDelState] = useState<NotifyState>({
+        success: false
+    });
+    const [itemDel, setItemDel] = React.useState(false);
 
     useEffect(() => {
         let data = getItems()
@@ -86,15 +94,22 @@ const EmployeeDetails = (): JSX.Element => {
     }, [])
 
     useEffect(() => {
+        if (itemDel == true) {
+            console.log("item del")
+            setShow(false)
+            setNotifyDelState({ success: true });
+        }
+    }, [itemDel])
+    useEffect(() => {
         const FilteredDataFinal = state.data.filter(item => {
             return item.checked == true
         })
-        if(FilteredDataFinal.length > 0 && updateFilters){
+        if (FilteredDataFinal.length > 0 && updateFilters) {
             setFilteredData(FilteredDataFinal)
             console.log("Filtered Final", FilteredDataFinal, FilteredDataFinal.length)
             setUpdateFilters(false)
         }
-      }, [updateFilters ])
+    }, [updateFilters])
 
 
     const exportPDF = () => {
@@ -152,7 +167,6 @@ const EmployeeDetails = (): JSX.Element => {
                 ? { ...item, [event.field || '']: event.value }
                 : item
         );
-
         setState({ data });
     };
 
@@ -173,25 +187,27 @@ const EmployeeDetails = (): JSX.Element => {
             update={update}
             cancel={cancel}
             editField={editField}
+            setItemDel={setItemDel}
+            itemDel={itemDel}
         />
     );
     const setSelectValue = (props) => {
         const record = state.data.findIndex(item => item.EmployeeID == props.EmployeeID);
         const filteredInfo = state.data;
-       
+
         let val;
         if (props.EmployeeID == state.data[record].EmployeeID) {
             if (filteredInfo[record].checked == false) {
                 // console.log("inside select in",filteredInfo[record].checked,state.data[record].EmployeeID, props.EmployeeID, props,record, state.data,FilteredData)
-      
+
                 filteredInfo[record].checked = true
             }
             else if (filteredInfo[record].checked == true) {
                 filteredInfo[record].checked = false
             }
-      
+
         }
-        setState({data : filteredInfo})
+        setState({ data: filteredInfo })
         setUpdateFilters(true)
     }
 
@@ -230,13 +246,13 @@ const EmployeeDetails = (): JSX.Element => {
             ref={_grid}
         >
             <GridToolbar>
-                <button
+                {/* <button
                     title="Export PDF"
                     className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
                     onClick={exportPDF}
                 >
                     Export PDF
-                </button>
+                </button> */}
                 <button
                     title="Add new"
                     className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
@@ -246,7 +262,7 @@ const EmployeeDetails = (): JSX.Element => {
                     Add new
                 </button>
                 <Popup anchor={anchor.current} show={show} popupClass={"popup-content"}>
-                    <BasicForm setShow={setShow} setNotifyState={setNotifyState}
+                    <EmployeeForm setShow={setShow} setNotifyState={setNotifyState}
                         data={state.data}
                         setState={setState}
                         add={add}
@@ -322,6 +338,13 @@ const EmployeeDetails = (): JSX.Element => {
         <GridPDFExport ref={(pdfExport) => (gridPDFExport = pdfExport)}>
             {GridComp}
         </GridPDFExport>
+         <DelNotifications
+            notifyDelstate={notifyDelstate}
+            setNotifyDelState={setNotifyDelState}
+            setItemDel={setItemDel}
+            itemDel={itemDel}
+            success={success}
+        />
     </div>);
 }
-export default EmployeeDetails;
+export default memo(EmployeeDetails);

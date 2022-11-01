@@ -23,50 +23,50 @@ export interface Product {
     FirstOrderedOn?: Date,
 }
 
-export interface columnInterface {
-    title?: string,
-    field?: string,
-    show?: boolean,
-    filter?: "boolean" | "numeric" | "text" | "date" | undefined,
-    minWidth?: number,
-    minGridWidth?: number,
-    locked?: boolean,
-    width?: string | number
-}
+// export interface columnInterface {
+//     title?: string,
+//     field?: string,
+//     show?: boolean,
+//     filter?: "boolean" | "numeric" | "text" | "date" | undefined,
+//     minWidth?: number,
+//     minGridWidth?: number,
+//     locked?: boolean,
+//     width?: string | number
+// }
 
-export interface OrderShipAddress {
-    street: string,
-    city: string,
-    region: string,
-    postalCode: number,
-    country: string
-}
+// export interface OrderShipAddress {
+//     street: string,
+//     city: string,
+//     region: string,
+//     postalCode: number,
+//     country: string
+// }
 
-export interface OrderDetails {
-    EmployeeID: number,
-    unitPrice: number,
-    quantity: number,
-    discount: number
-}
-export interface Order {
-    orderID: number,
-    OrderID?: number,
-    customerID: string,
-    employeeID: number,
-    orderDate?: Date,
-    requiredDate: Date,
-    shippedDate?: Date,
-    shipVia: number,
-    freight: number,
-    shipName: string,
-    shipAddress: OrderShipAddress,
-    details: OrderDetails[]
-}
+// export interface OrderDetails {
+//     EmployeeID: number,
+//     unitPrice: number,
+//     quantity: number,
+//     discount: number
+// }
+// export interface Order {
+//     orderID: number,
+//     OrderID?: number,
+//     customerID: string,
+//     employeeID: number,
+//     orderDate?: Date,
+//     requiredDate: Date,
+//     shippedDate?: Date,
+//     shipVia: number,
+//     freight: number,
+//     shipName: string,
+//     shipAddress: OrderShipAddress,
+//     details: OrderDetails[]
+// }
 
-export interface Person {
-    id: number,
-    firstName: string,
-    lastName: string,
-    city: string,
-    title: string
-};
+// export interface Person {
+//     id: number,
+//     firstName: string,
+//     lastName: string,
+//     city: string,
+//     title: string
+// };
