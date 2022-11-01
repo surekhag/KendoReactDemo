@@ -52,3 +52,7 @@ border-color: blue;
     color: white;
     background-color: #7dabe2;
 }
+.totalText {
+    /* margin-top: 10px; */
+    font-weight: bold;
+}

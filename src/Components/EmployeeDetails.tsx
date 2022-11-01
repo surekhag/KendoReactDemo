@@ -345,6 +345,8 @@ const EmployeeDetails = (): JSX.Element => {
             itemDel={itemDel}
             success={success}
         />
+        <p className="totalText">Total records selected are {FilteredData.length}</p>
+        {/* {`Total records selected are ${FilteredData.length}`} */}
     </div>);
 }
 export default memo(EmployeeDetails);
