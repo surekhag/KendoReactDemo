@@ -18,11 +18,9 @@ export const getItems = () => {
 
 export const updateItem = item => {
     let index = data.findIndex(record => {
-        console.log("rec", record,record.EmployeeID,item.EmployeeID)
        return  record.EmployeeID === item.EmployeeID
     });
     data[index] = item;
-    console.log("finl data", data[index], index,item, data)
     return data;
 };
 

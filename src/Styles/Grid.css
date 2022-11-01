@@ -29,3 +29,17 @@ border-color: blue;
 }
 
 
+.delpopup {
+    position: relative;
+    margin: auto;
+    /* top: 10px; */
+    left: -100px;
+    right: unset;
+    width: 250px;
+}
+.delpopup button {
+    margin-right: 10px;
+}
+.selectRecord {
+    padding-left: 20px;
+}

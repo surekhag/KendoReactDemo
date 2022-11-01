@@ -1,10 +1,33 @@
-import * as React from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { Popup } from "@progress/kendo-react-popup";
+import {
+  Notification,
+  NotificationGroup,
+} from "@progress/kendo-react-notification";
+import { Fade } from "@progress/kendo-react-animation";
+interface State1 {
+  success: boolean;
+}
 
 export const MyCommandCell = props => {
   const { dataItem } = props;
   const inEdit = dataItem[props.editField];
   const isNewItem = dataItem.EmployeeID === undefined;
-// console.log("in edit comp", inEdit, props,dataItem)
+  const anchor = useRef<HTMLButtonElement | null>(null);
+
+  const [show, setShow] = useState(false);
+  const [notifystate, setNotifyState] = React.useState<State1>({
+    success: false
+  });
+  const [itemDel, setItemDel] = React.useState(false);
+  useEffect(() => {
+    if (itemDel == true) {
+      setShow(false)
+      setNotifyState({ success: true });
+    }
+  }, [itemDel])
+  const { success } = notifystate;
+
   return inEdit ? (
     <td className="k-command-cell">
       <button
@@ -30,13 +53,54 @@ export const MyCommandCell = props => {
       </button>
       <button
         className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base k-grid-remove-command"
-        onClick={() =>
-          confirm("Confirm deleting: " + dataItem.EmployeeName) &&
-          props.remove(dataItem)
+        onClick={() => {
+          setShow(true)
         }
+        }
+        ref={anchor}
       >
         Remove
       </button>
+      <Popup anchor={anchor.current} show={show} popupClass={"popup-content delpopup"}>
+        <div>
+          <p>  Confirm deleting:  {dataItem.EmployeeName}</p>
+          <td className="k-command-cell">
+            <button
+              className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
+              onClick={() => {
+                props.remove(dataItem);
+                setNotifyState({ success: true })
+              }
+              }>Ok</button>
+            <button className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-primary"
+              onClick={() => {
+                setShow(false)
+              }}
+            >Cancel</button></td>
+        </div>
+
+      </Popup>
+      <NotificationGroup
+        style={{
+          left: "-140px",
+          top: "0px",
+          alignItems: "flex-start",
+          flexWrap: "wrap-reverse",
+        }}
+      >
+        <Fade>
+          {success && (
+            <Notification
+              type={{ style: "success", icon: true }}
+              closable={true}
+              onClose={() => setNotifyState({ success: false })}
+            >
+              <span>Employee Info has been removed!</span>
+            </Notification>
+          )}
+        </Fade>
+      </NotificationGroup>
+
     </td>
   );
 };

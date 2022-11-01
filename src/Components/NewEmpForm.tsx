@@ -29,7 +29,6 @@ const emailRegex: RegExp = new RegExp(/\S+@\S+\.\S+/);
 
 const NameInput = (fieldRenderProps: FieldRenderProps) => {
     const { validationMessage, visited, data, ...others } = fieldRenderProps;
-    // console.log("name ", fieldRenderProps)
     return (
         <div>
             <Input {...others} value={data} />
@@ -42,15 +41,14 @@ const NameInput = (fieldRenderProps: FieldRenderProps) => {
 };
 
 const BasicForm = (props) => {
-    const { setShow, setNotifyState, data, setState, add, application, edit, update, discard, dataToEdit } = props;
-    // console.log("form ptop", dataToEdit)
-    const [EmpName, setEmpName] = useState(dataToEdit.EmployeeName);
-    const [department, setDepartment] = useState(dataToEdit.Department)
-    const [designation, setDesignation] = useState(dataToEdit.Designation)
-    const [address, setAddress] = useState(dataToEdit.Address)
+    const { setShow, setNotifyState, data, setState, add, application, edit, update, discard, dataToEdit,setDataToEdit } = props;
+    const [EmpName, setEmpName] = useState(dataToEdit && dataToEdit.EmployeeName);
+    const [department, setDepartment] = useState(dataToEdit && dataToEdit.Department)
+    const [designation, setDesignation] = useState(dataToEdit && dataToEdit.Designation)
+    const [address, setAddress] = useState(dataToEdit && dataToEdit.Address)
     const [isDisplayed, setIsDisplayed] = useState(false);
     const handleSubmit = (dataItem: { [name: string]: any }) => {
-        // console.log("dataItem",dataItem)
+        let name ,dept,desn,addr, checkedVal;
         if (application == "addNewRecord") {
             let temp = { ...dataItem, inEdit: true, Active: true }
             add(temp)
@@ -60,9 +58,19 @@ const BasicForm = (props) => {
             node.click();
         }
         if (application == "editRecord") {
-            // console.log("inside update", dataToEdit)
-            let temp = { EmployeeID: dataToEdit.EmployeeID, ...dataItem, inEdit: true, }
-
+            name = dataItem.EmployeeName ?  dataItem.EmployeeName : dataToEdit.EmployeeName
+            dept=dataItem.Department? dataItem.Department : dataToEdit.Department;
+            desn=dataItem.Designation? dataItem.Designation : dataToEdit.Designation;
+            addr =dataItem.Address? dataItem.Address : dataToEdit.Address;
+            checkedVal= dataItem.checked? dataItem.checked : dataToEdit.checked;
+            let temp = { EmployeeID: dataToEdit && dataToEdit.EmployeeID,
+                EmployeeName:name,
+                Department: dept,
+                Designation : desn,
+                Address: addr,
+                checked: checkedVal,
+                 ...dataItem, inEdit: true, }
+          
             //add all fields here ..
             update(temp)
             setShow(false)
@@ -75,6 +83,7 @@ const BasicForm = (props) => {
 
     const closeForm = () => {
         setShow(false);
+        setDataToEdit(null);
     }
 
 
@@ -96,7 +105,6 @@ const BasicForm = (props) => {
                                 data={EmpName}
                                 label={'Employee Name'}
                                 onChange={(value) => {
-                                    console.log("name", value.value)
                                     setEmpName(value.value)
                                 }}
                                 validator={() => nameValidator(EmpName)} />
@@ -131,14 +139,29 @@ const BasicForm = (props) => {
                             type={'submit'}
                             className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base"
                             disabled={!formRenderProps.allowSubmit}
-                            onClick={() => { console.log("update", formRenderProps) }}
+                            // onClick={() => { console.log("update", formRenderProps) }}
                         >
                             {application == "addNewRecord" ? "Add" : "Update"}
                         </Button>
-
+                        
+                        {application == "addNewRecord" ? <>
                         <Button id="clear" onClick={formRenderProps.onFormReset}>
-                            {application == "addNewRecord" ? "Clear" : "Cancel"}
+                          Clear
                         </Button>
+                        </> : <>
+                        <Button id="clear" onClick={()=>
+                            {
+                                formRenderProps.onFormReset();
+                                setShow(false)
+                                // setDataToEdit(null)
+                            }
+                            }>
+                           Cancel
+                        </Button>
+                        </>}
+
+                       
+                       
 
                     </div>
                 </FormElement>

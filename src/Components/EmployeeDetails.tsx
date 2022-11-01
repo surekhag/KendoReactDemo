@@ -36,7 +36,7 @@ interface State1 {
 }
 const initialSort: Array<SortDescriptor> = [
     { field: "EmployeeName", dir: "asc" },
-  ];
+];
 const initialFilter: CompositeFilterDescriptor = {
     logic: "and",
     filters: [
@@ -73,22 +73,29 @@ const EmployeeDetails = (): JSX.Element => {
         success: false
     });
     const { success } = notifystate;
+    const [show, setShow] = React.useState(false);
+    const [dataToEdit, setDataToEdit] = useState();
+    const [targetForm, setTargetForm] = React.useState(null);
+    const filterData = state.data && filterBy(state.data, filter);
+    let gridPDFExport: GridPDFExport | null;
+    const [updateFilters, setUpdateFilters]= useState(false)
+
     useEffect(() => {
         let data = getItems()
         setState({ data })
-        setFilteredData([...data])
     }, [])
 
     useEffect(() => {
-        const FilteredDataFinal = FilteredData.filter(item => {
+        const FilteredDataFinal = state.data.filter(item => {
             return item.checked == true
         })
-        FilteredDataFinal.length > 0
-        setState({ data: FilteredData })
-        console.log("Filtered Final", FilteredDataFinal, FilteredDataFinal.length)
-    }, [FilteredData])
+        if(FilteredDataFinal.length > 0 && updateFilters){
+            setFilteredData(FilteredDataFinal)
+            console.log("Filtered Final", FilteredDataFinal, FilteredDataFinal.length)
+            setUpdateFilters(false)
+        }
+      }, [updateFilters ])
 
-    let gridPDFExport: GridPDFExport | null;
 
     const exportPDF = () => {
         if (gridPDFExport !== null) {
@@ -102,7 +109,6 @@ const EmployeeDetails = (): JSX.Element => {
 
     const add = (dataItem: Product) => {
         dataItem.inEdit = true;
-
         const data = insertItem(dataItem);
         setState({
             data: data
@@ -110,18 +116,14 @@ const EmployeeDetails = (): JSX.Element => {
     };
 
     const update = (dataItem: Product) => {
-        console.log("in short", dataItem)
         dataItem.inEdit = false;
         const newData = updateItem(dataItem);
-        console.log("data post update", newData);
         setState({ data: newData });
     };
 
-    useEffect(()=>{
-        console.log("data updated")
-    },[state.data])
     // Local state operations
     const discard = () => {
+        console.log("in discard")
         const data = [...state.data];
         data.splice(0, 1)
         setState({ data });
@@ -142,12 +144,6 @@ const EmployeeDetails = (): JSX.Element => {
         setShow(true)
         setTargetForm("editRecord")
         setDataToEdit(dataItem)
-        console.log("in edit", dataItem)
-        // setState({
-        //     data: state.data.map(item =>
-        //         item.EmployeeID === dataItem.EmployeeID ? { ...item, inEdit: true } : item
-        //     )
-        // });
     };
 
     const itemChange = (event: GridItemChangeEvent) => {
@@ -163,12 +159,9 @@ const EmployeeDetails = (): JSX.Element => {
     const addNew = () => {
         const newDataItem = { inEdit: true, Active: false };
         setShow(true)
+        setDataToEdit(null);
         setTargetForm("addNewRecord");
-        // setState({
-        //     data: [newDataItem, ...state.data]
-        // });
     };
-
 
     const CommandCell = (props: GridCellProps) => (
         <MyCommandCell
@@ -184,30 +177,30 @@ const EmployeeDetails = (): JSX.Element => {
     );
     const setSelectValue = (props) => {
         const record = state.data.findIndex(item => item.EmployeeID == props.EmployeeID);
-        const filteredInfo = FilteredData;
-
+        const filteredInfo = state.data;
+       
         let val;
         if (props.EmployeeID == state.data[record].EmployeeID) {
             if (filteredInfo[record].checked == false) {
+                // console.log("inside select in",filteredInfo[record].checked,state.data[record].EmployeeID, props.EmployeeID, props,record, state.data,FilteredData)
+      
                 filteredInfo[record].checked = true
             }
             else if (filteredInfo[record].checked == true) {
                 filteredInfo[record].checked = false
             }
-        }  // setFilteredData(filteredInfo);
-        setState(filteredInfo)
+      
+        }
+        setState({data : filteredInfo})
+        setUpdateFilters(true)
     }
-    
+
     const SelectRecord = (props: GridCellProps) => {
-        return <Checkbox defaultChecked={false} onChange={() => setSelectValue(props.dataItem)}
+        return <Checkbox className="selectRecord" defaultChecked={false} onChange={() => setSelectValue(props.dataItem)}
             value={props.dataItem.checked} />
     }
     const [dataState, setDataState] = React.useState<State>(initialDataState);
 
-    const [show, setShow] = React.useState(false);
-    const [dataToEdit, setDataToEdit]= useState();
-    const [targetForm, setTargetForm] = React.useState(null);
-    const filterData = state.data && filterBy(state.data, filter);
     const GridComp =
         <Grid
             id="prods"
@@ -215,24 +208,21 @@ const EmployeeDetails = (): JSX.Element => {
             style={{
                 height: "400px",
             }}
-            // data={process(state.data, dataState)}
             {...dataState}
             onDataStateChange={(e: GridDataStateChangeEvent) => {
                 setDataState(e.dataState);
             }}
-            // data={state.data}
             onItemChange={itemChange}
             editField={editField}
             sortable={true}
-            sort = {sort}
+            sort={sort}
             onSortChange={(e: GridSortChangeEvent) => {
-                setSort(e.sort)}}
-            data={orderBy(filterData && filterData.slice(page.skip, page.skip + page.take), sort)}
+                setSort(e.sort)
+            }}
+            data={filterData && orderBy(filterData.slice(page.skip, page.skip + page.take), sort)}
             filterable={true}
             filter={filter}
             onFilterChange={(e: GridFilterChangeEvent) => setFilter(e.filter)}
-
-
             onPageChange={(e: GridPageChangeEvent) => setPage(e.page)}
             total={state.data && state.data.length}
             skip={page.skip}
@@ -261,18 +251,23 @@ const EmployeeDetails = (): JSX.Element => {
                         setState={setState}
                         add={add}
                         edit={enterEdit}
-                        application= {targetForm}
+                        application={targetForm}
                         discard={discard}
                         update={update}
                         cancel={cancel}
                         dataToEdit={dataToEdit}
-                         />
+                        setDataToEdit={
+                            setDataToEdit
+                        }
+                    />
                 </Popup>
 
                 <NotificationGroup
                     style={{
-                        right: 0,
-                        top: "0",
+                        right: "110px",
+                        // top: "0",
+                        // left: "0px",
+                        top: "0px",
                         alignItems: "flex-start",
                         flexWrap: "wrap-reverse",
                     }}
@@ -292,23 +287,23 @@ const EmployeeDetails = (): JSX.Element => {
             </GridToolbar>
             <GridColumn
                 field="checked"
-                title="Select Field"
-                width="40px"
+                title="Select"
+                width="110px"
                 cell={SelectRecord}
                 editor="boolean" />
             {/* <GridColumn field="Active" title="Active" editor="boolean" /> */}
 
-            <GridColumn field="EmployeeID" title="ID" width="40px" editable={false} />
-            <GridColumn field="EmployeeName" title="Employee Name" width="250px" />
+            <GridColumn field="EmployeeID" title="ID" width="130px" editable={false} />
+            <GridColumn field="EmployeeName" title="Employee Name" width="200px" />
             <GridColumn
                 field="Designation"
                 title="Designation"
-                width="120px"
+                width="100px"
             />
             <GridColumn
                 field="Address"
                 title="Address"
-                width="220px"
+                width="200px"
             />
             <GridColumn
                 field="Department"
@@ -316,12 +311,11 @@ const EmployeeDetails = (): JSX.Element => {
                 width="220px"
             />
 
-            <GridColumn field="Active" title="Active" editor="boolean" />
-            <GridColumn cell={CommandCell} width="200px" />
+            {/* <GridColumn field="Active" title="Active" editor="boolean" /> */}
+            <GridColumn cell={CommandCell} width="160px" />
         </Grid>
 
     {/* <CommandCell /> */ }
-    console.log("state data", state.data)
     return (<div className="pagewrapper">
         <h3 className='headtext'> Employee Information</h3>
         {GridComp}
