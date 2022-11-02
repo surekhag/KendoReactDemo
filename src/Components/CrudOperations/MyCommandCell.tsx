@@ -23,12 +23,12 @@ import { Popup } from "@progress/kendo-react-popup";
       >
         {isNewItem ? "Add" : "Update"}
       </button>
-      <button
+      {/* <button
         className="k-button k-button-md k-rounded-md k-button-solid k-button-solid-base k-grid-cancel-command"
         onClick={() => (isNewItem ? props.discard(dataItem) : props.cancel(dataItem))}
       >
         {isNewItem ? "Discard" : "Cancel"}
-      </button>
+      </button> */}
     </td>
   ) : (
     <td className="k-command-cell">

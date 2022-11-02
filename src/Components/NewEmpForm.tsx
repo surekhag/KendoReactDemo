@@ -41,12 +41,11 @@ const NameInput = (fieldRenderProps: FieldRenderProps) => {
 };
 
 const EmployeeForm = (props) => {
-    const { setShow, setNotifyState, data, setState, add, application, edit, update, discard, dataToEdit,setDataToEdit } = props;
+    const { setShow, setNotifyState, data, setState, add, application, edit, update, dataToEdit,setDataToEdit } = props;
     const [EmpName, setEmpName] = useState(dataToEdit && dataToEdit.EmployeeName);
     const [department, setDepartment] = useState(dataToEdit && dataToEdit.Department)
     const [designation, setDesignation] = useState(dataToEdit && dataToEdit.Designation)
     const [address, setAddress] = useState(dataToEdit && dataToEdit.Address)
-    const [isDisplayed, setIsDisplayed] = useState(false);
     const handleSubmit = (dataItem: { [name: string]: any }) => {
         let name ,dept,desn,addr, checkedVal;
         if (application == "addNewRecord") {

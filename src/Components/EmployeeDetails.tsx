@@ -138,23 +138,23 @@ const EmployeeDetails = (): JSX.Element => {
     };
 
     // Local state operations
-    const discard = () => {
-        console.log("in discard")
-        const data = [...state.data];
-        data.splice(0, 1)
-        setState({ data });
-    };
+    // const discard = () => {
+    //     console.log("in discard")
+    //     const data = [...state.data];
+    //     data.splice(0, 1)
+    //     setState({ data });
+    // };
 
-    const cancel = (dataItem: Product) => {
-        const originalItem = getItems().find(
-            p => p.EmployeeID === dataItem.EmployeeID
-        );
-        const data = state.data.map(item =>
-            item.EmployeeID === originalItem.EmployeeID ? originalItem : item
-        );
+    // const cancel = (dataItem: Product) => {
+    //     const originalItem = getItems().find(
+    //         p => p.EmployeeID === dataItem.EmployeeID
+    //     );
+    //     const data = state.data.map(item =>
+    //         item.EmployeeID === originalItem.EmployeeID ? originalItem : item
+    //     );
 
-        setState({ data });
-    };
+    //     setState({ data });
+    // };
 
     const enterEdit = (dataItem: Product) => {
         setShow(true)
@@ -184,9 +184,9 @@ const EmployeeDetails = (): JSX.Element => {
             edit={enterEdit}
             remove={remove}
             add={add}
-            discard={discard}
+            // discard={discard}
             update={update}
-            cancel={cancel}
+            // cancel={cancel}
             editField={editField}
             setItemDel={setItemDel}
             itemDel={itemDel}
@@ -261,7 +261,7 @@ const EmployeeDetails = (): JSX.Element => {
                     onClick={addNew}
                     ref={anchor}
                 >
-                    Add new
+                    Add new Employee
                 </button>
                 <Popup anchor={anchor.current} show={show} popupClass={"popup-content"}>
                     <EmployeeForm setShow={setShow} setNotifyState={setNotifyState}
@@ -270,9 +270,9 @@ const EmployeeDetails = (): JSX.Element => {
                         add={add}
                         edit={enterEdit}
                         application={targetForm}
-                        discard={discard}
+                        // discard={discard}
                         update={update}
-                        cancel={cancel}
+                        // cancel={cancel}
                         dataToEdit={dataToEdit}
                         setDataToEdit={
                             setDataToEdit
