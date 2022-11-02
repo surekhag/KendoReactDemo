@@ -119,6 +119,7 @@ const EmployeeDetails = (): JSX.Element => {
     };
     const remove = (dataItem: Product) => {
         const data = deleteItem(dataItem);
+        setUpdateFilters(true)
         setState({ data });
     };
 
@@ -223,6 +224,7 @@ const EmployeeDetails = (): JSX.Element => {
             pageable={true}
             style={{
                 height: "400px",
+                width: "auto"
             }}
             {...dataState}
             onDataStateChange={(e: GridDataStateChangeEvent) => {
@@ -304,31 +306,32 @@ const EmployeeDetails = (): JSX.Element => {
             <GridColumn
                 field="checked"
                 title="Select"
-                width="110px"
+                width="100%"
                 cell={SelectRecord}
                 editor="boolean" />
             {/* <GridColumn field="Active" title="Active" editor="boolean" /> */}
 
-            <GridColumn field="EmployeeID" title="ID" width="130px" editable={false} />
-            <GridColumn field="EmployeeName" title="Employee Name" width="200px" />
+            <GridColumn field="EmployeeID" title="Employee ID" width="150%" editable={false} />
+
+            <GridColumn field="EmployeeName" title="Employee Name" width="200%" />
             <GridColumn
                 field="Designation"
                 title="Designation"
-                width="100px"
+                width="200%"
             />
             <GridColumn
                 field="Address"
                 title="Address"
-                width="200px"
+                width="200%"
             />
             <GridColumn
                 field="Department"
                 title="Department"
-                width="220px"
+                width="200%"
             />
 
             {/* <GridColumn field="Active" title="Active" editor="boolean" /> */}
-            <GridColumn cell={CommandCell} width="160px" />
+            <GridColumn cell={CommandCell} width="150%" />
         </Grid>
 
     {/* <CommandCell /> */ }
@@ -345,8 +348,9 @@ const EmployeeDetails = (): JSX.Element => {
             itemDel={itemDel}
             success={success}
         />
-        <p className="totalText">Total records selected are {FilteredData.length}</p>
-        {/* {`Total records selected are ${FilteredData.length}`} */}
+       {FilteredData.length> 0  &&  <p className="totalText">Total records selected are {FilteredData.length}</p>
+        }
+  {/* {`Total records selected are ${FilteredData.length}`} */}
     </div>);
 }
 export default memo(EmployeeDetails);
